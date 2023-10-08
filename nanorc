@@ -1,0 +1,169 @@
+############### CONFIG
+set tabstospaces
+set tabsize 2
+set multibuffer
+set nohelp
+set zap
+#set suspendable
+set afterends
+set positionlog
+set quickblank
+set smarthome
+set titlecolor lightwhite,blue
+set statuscolor lightwhite,green
+set selectedcolor lightwhite,purple
+set numbercolor cyan
+set keycolor cyan
+set functioncolor green
+set indicator
+set scrollercolor purple,black
+set wordchars ""
+set autoindent
+#set showcursor
+set minibar
+set constantshow
+
+################ KEYS
+bind ^O insert main
+bind ^S savefile main
+bind ^A writeout main
+bind ^W exit all
+bind ^D suspend main
+bind ^X cut main
+bind ^C copy main
+bind ^V paste all
+bind ^F whereis main
+bind F3 findnext main
+bind ^H replace main
+bind ^G gotoline main
+bind ^Z undo main
+bind ^Y redo main
+bind ^R recordmacro main
+bind ^E runmacro main
+bind ^T help main
+bind ^K findbracket main
+bind ^J findnext main
+bind ^U findprevious main
+bind ^L constantshow main
+bind ^/ comment main
+bind ^B browser insert
+bind ^B prevbuf main
+bind ^N nextbuf main
+bind ^W cancel search
+bind ^W cancel replace
+bind ^W cancel replacewith
+bind ^W cancel gotoline
+bind ^W cancel writeout
+bind ^W cancel insert
+bind ^P softwrap main
+bind ^I complete main
+
+################## JS
+syntax "JavaScript" "\.js$" "\.jjj$" "\.json$"
+comment "//"
+color lightwhite "^.*$"
+color lightmagenta   "\<[-+]?([1-9][0-9]*|0[0-7]*|0x[0-9a-fA-F]+)([uU][lL]?|[lL][uU]?)?\>"
+color lightmagenta   "\<[-+]?([0-9]+\.[0-9]*|[0-9]*\.[0-9]+)([EePp][+-]?[0-9]+)?[fFlL]?"
+color lightmagenta   "\<[-+]?([0-9]+[EePp][+-]?[0-9]+)[fFlL]?"
+color lightcyan "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[(]|)"
+color pink  "\<(break|case|catch|continue|default|do|else|finally|for|of|get|redif|if|in|instanceof|set|switch)\>"
+color pink  "\<(switch|this|throw|try|typeof|var|void|while|with|delete)\>"
+color pink   "\<(return|new)\>"
+color lightblue  "\<(const|let|class|extends|get|set|await|yield)\>"
+color cyan  "\<(null|undefined|NaN)\>"
+color cyan  "\<(import|as|from|export)\>"
+color brightgreen  "\<(async|function)\>"
+color purple  "\<(true|false)\>"
+color lightblue  "\<(Array|Boolean|Date|Enumerator|Error|Function|Math)\>"
+color lightblue  "\<(Map|WeakMap|Set|WeakSet|Promise|Symbol)\>"
+color lightblue  "\<(Number|Object|RegExp|String)\>"
+color lightred "[-+/*=<>!~%?:&|]"
+color lightmagenta   "/[^*]([^/]|(\\/))*[^\\]/[gim]*"
+color lightmagenta   "\\[0-7][0-7]?[0-7]?|\\x[0-9a-fA-F]+|\\[bfnrt'"\?\\]"
+color lightyellow ""(\\.|[^"])*"|'(\\.|[^'])*'|(`|\})(\\.|[^`$]|$[^{])*(\$\{|`)"
+color green "(^|[[:space:]])//.*"
+color lightblack start="\/\*" end="\*\/"
+color green "/\*.+\*/"
+color green "^#!.*"
+color ,green "[[:space:]]+$"
+color ,white "	+ +| +	+"
+
+
+############### HTML
+syntax "HTML" "\.html?(.j2)?(.twig)?$"
+magic "HTML document"
+comment "<!--|-->"
+color lightwhite "^.*$"
+color lightwhite start="<([biu]|em|strong)[^>]*>" end="</([biu]|em|strong)>"
+color lightcyan start="<" end=">"
+color lightgreen "[[:space:]](abbr|accept(-charset)?|accesskey|action|[av]?link|alt|archive|axis|background|(bg)?color|border)="
+color lightgreen "[[:space:]](cell(padding|spacing)|char(off|set)?|checked|cite|class(id)?|compact|code(base|tag)?|cols(pan)?)="
+color lightgreen "[[:space:]](content(editable)?|contextmenu|coords|data|datetime|declare|defer|dir|enctype)="
+color lightgreen "[[:space:]](for|frame(border)?|headers|height|hidden|href(lang)?|hspace|http-equiv|id|ismap)="
+color lightgreen "[[:space:]](label|lang|longdesc|margin(height|width)|maxlength|media|method|multiple)="
+color lightgreen "[[:space:]](name|nohref|noresize|noshade|object|on(click|focus|load|mouseover|keypress)|profile|readonly|rel|rev)="
+color lightgreen "[[:space:]](rows(pan)?|rules|scheme|scope|scrolling|shape|size|span|src|standby|start|style|summary|pattern)="
+color lightgreen "[[:space:]](tabindex|target|text|title|type|usemap|v?align|value(type)?|vspace|width|xmlns|xml:space)="
+color lightgreen "[[:space:]](required|disabled|selected)[[:space:]=>]"
+color lightyellow ""(\\.|[^"])*""
+color yellow "&#?[[:alnum:]]*;"
+color magenta "\{[^\}]*\}\}?"
+color lightgreen "[[:space:]]((end)?if|(end)?for|in|not|(end)?block)[[:space:]]"
+color green start="<!--" end="-->"
+color ,green "[[:space:]]+$"
+
+############### ASP
+syntax "ASP" "\.asp$"
+comment "'"
+icolor lightmagenta   "\<[-+]?([1-9][0-9]*|0[0-7]*|0x[0-9a-fA-F]+)([uU][lL]?|[lL][uU]?)?\>"
+icolor lightmagenta   "\<[-+]?([0-9]+\.[0-9]*|[0-9]*\.[0-9]+)([EePp][+-]?[0-9]+)?[fFlL]?"
+icolor lightmagenta   "\<[-+]?([0-9]+[EePp][+-]?[0-9]+)[fFlL]?"
+icolor lightblue "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[(]|)"
+icolor pink  "\<(break|case|catch|continue|default|do|until|while|loop|next|else|elseif|or|and|end if|finally|for|get|if|then|in|instanceof|set|switch)\>"
+icolor lightcyan  "\<(switch|this|throw|try|typeof|var|void|while|with|delete|async)\>"
+icolor cyan  "\<(null|undefined|NaN)\>"
+icolor cyan  "\<(import|as|from|export)\>"
+icolor cyan  "\<(const|let|class|extends|get|set|of|await|yield)\>"
+icolor brightgreen "(function|end function|sub|end sub)"
+icolor lightred   "\<(return|new|public|dim|exit)\>"
+icolor lightred  "\<(true|false|date|now)\>"
+icolor lightblue  "\<(Map|WeakMap|Set|WeakSet|Promise|Symbol)\>"
+icolor lightblue  "\<(Number|Object|RegExp|String)\>"
+icolor lightcyan "[-+/*=<>!~%?:&|]"
+icolor magenta   "/[^*]([^/]|(\\/))*[^\\]/[gim]*"
+icolor magenta  "\\[0-7][0-7]?[0-7]?|\\x[0-9a-fA-F]+|\\[bfnrt'"\?\\]"
+icolor lightyellow ""(\\.|[^"])*"|'(\\.|[^'])*'|(`|\})(\\.|[^`$]|$[^{])*(\$\{|`)"
+color green "(^|[[:space:]])'.*"
+
+
+############# CSS
+syntax "CSS" "\.(css|scss|less)$"
+color lightcyan     "."
+color lightyellow  start="\{" end="\}"
+color lightblue    ":active|:focus|:hover|:link|:visited|:link|:after|:before|$"
+color lightgreen         ";|:|\{|\}"
+color lightwhite   start=":" end="[;^\{]"
+color purple   "[0-9]"
+color lightblack    start="\/\*" end="\*\/"
+color ,green "[[:space:]]+$"
+
+############# SH
+syntax "SH" "\.sh$" "\.ash" "\.bashrc" "bashrc" "\.bash_aliases" "bash_aliases" "\.bash_functions" "bash_functions" "\.bash_login" "\.bash_logout" "\.bash_profile" "bash_profile" "\.profile" "revise\..+$"
+header "^#!.*/(env +)?(ba|da|a)?sh( |$)"
+magic "(POSIX|Bourne-Again) shell script.*text"
+comment "#"
+linter dash -n
+## keywords:
+color green "\<(case|do|done|elif|else|esac|fi|for|function|if|in|select|then|time|until|while)\>"
+color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"
+color green "-[Ldefgruwx]\>"
+color green "-(eq|ne|gt|lt|ge|le|s|n|z)\>"
+## builtins:
+color lightblue "\<(alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|compopt|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|false|fc|fg|getopts|hash|help|history|jobs|kill|let|local|logout|mapfile|popd|printf|pushd|pwd|read|readarray|readonly|return|set|shift|shopt|source|suspend|test|times|trap|true|type|typeset|ulimit|umask|unalias|unset|wait)\>"
+## not buitins:
+## cat|chmod|chown|cp|env|grep|install|ln|make|mkdir|mv|rm|sed|tar|touch
+icolor lightgreen "^\s+[0-9A-Z_]+\s+\(\)"
+icolor lightred "\$\{?[0-9A-Z_!@#$*?-]+\}?"
+color lightyellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+color lightblack "(^|[[:space:]])#.*$"
+color ,green "[[:space:]]+$"
