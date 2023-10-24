@@ -8,7 +8,7 @@ cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
 
-====================nodejs
+#====================nodejs
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
@@ -18,7 +18,7 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 sudo apt-get update
 sudo apt-get install nodejs -y
 
-=================nvim ===neovim
+#=================nvim ===neovim
 ### install nvim as appimage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
