@@ -4,6 +4,7 @@ sudo apt install -y htop curl git tmux nginx docker.io
 sudo npm install -g pm2 mongodb 
 
 git clone git@github.com:noamso1/dot.git
+# git clone https://github.com/noamso1/dot.git
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
@@ -37,8 +38,8 @@ sudo ln -s /squashfs-root/AppRun /bin/vi
 
 ### my config
 apt install nodejs npm gcc unzip ripgrep
-mkdir -p ~/.config/nvim
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
+mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 
 ### NvChad
