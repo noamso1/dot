@@ -37,7 +37,7 @@ sudo mv /bin/vi /bin/vi.old
 sudo ln -s /squashfs-root/AppRun /bin/vi
 
 ### my config
-apt install nodejs npm gcc unzip ripgrep
+apt install gcc unzip ripgrep nodejs npm
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
