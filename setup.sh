@@ -1,7 +1,5 @@
-
 sudo apt update y && sudo apt upgrade -y
 sudo apt install -y htop curl git tmux nginx docker.io
-sudo npm install -g pm2 mongodb 
 
 git clone git@github.com:noamso1/dot.git
 # git clone https://github.com/noamso1/dot.git
@@ -19,6 +17,7 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 sudo apt-get update
 sudo apt-get install nodejs -y
 node -v
+sudo npm install -g pm2 mongodb json5
 
 #=================nvim ===neovim
 ### install nvim as appimage
