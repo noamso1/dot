@@ -70,8 +70,10 @@ alias gcp='gcloud config get-value project'
 alias gcpp='gcloud config set project'
 alias bqq='bq query --nouse_legacy_sql --max_rows=1000'
 alias bqq2='bq query --nouse_legacy_sql --max_rows=100000'
+alias bqqcsv='bq query --nouse_legacy_sql --max_rows=100000 --destination_format csv'
 alias gcplog='gcloud functions logs read --limit=500 --sort-by=TIME_UTC'
 alias colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
+alias ub1='sudo docker run -ti --rm --name ub1 -v ~/Downloads:/Downloads ubuntu /bin/bash'
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $1" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
@@ -80,9 +82,9 @@ decrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -d ; }
 gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git pull ; git push ; }
 tarex() { tar cvJf ${1:-1.tar.xz} --exclude='.[^/]*' --exclude=node_modules ${2:-*} ; }
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 # bun
