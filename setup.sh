@@ -3,6 +3,7 @@ sudo apt install -y htop curl git tmux nginx docker.io
 
 git clone git@github.com:noamso1/dot.git
 # git clone https://github.com/noamso1/dot.git
+
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
