@@ -62,7 +62,7 @@ alias sa='ssh -i ~/.ssh/maps.cer ubuntu@ssh.node.moovex.com'
 alias sn='ssh root@noamso.one'
 alias sg='gcloud cloud-shell ssh --authorize-session'
 alias vnctunnel='ssh -L 5901:localhost:5901 -N -C root@noamso.one'
-alias toascii='od -An -vtu1'
+alias toascii='od -An -vtu1' #hex
 alias curlt='curl -w "\nTIME %{time_total}\n"'
 alias up='sudo apt update -y && sudo apt upgrade -y'
 alias ampy='/home/noam/.local/bin/ampy --port /dev/ttyACM0'
@@ -81,6 +81,17 @@ encrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -pass pass:$3 ; }
 decrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -d ; }
 gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git pull ; git push ; }
 tarex() { tar cvJf ${1:-1.tar.xz} --exclude='.[^/]*' --exclude=node_modules ${2:-*} ; }
+installnode() {
+  sudo apt-get update
+  sudo apt-get install -y ca-certificates curl gnupg
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+  NODE_MAJOR=18
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  sudo apt-get update
+  sudo apt-get install nodejs -y
+  node -v
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
