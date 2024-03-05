@@ -92,6 +92,9 @@ installnode() {
   sudo apt-get install nodejs -y
   node -v
 }
+function jwt() {
+  sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
