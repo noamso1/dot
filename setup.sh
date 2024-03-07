@@ -7,6 +7,7 @@ git clone git@github.com:noamso1/dot.git
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
+bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
 
 #====================nodejs
 installnode #function from .bashrc
