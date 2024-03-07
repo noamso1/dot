@@ -7,8 +7,11 @@ git clone git@github.com:noamso1/dot.git
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
+
+# atuin search history
 bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
 atuin import auto
+# search for exact text with '
 
 #====================nodejs
 installnode #function from .bashrc
