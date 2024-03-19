@@ -29,7 +29,7 @@ PS1='\[\e[48;5;239m\]\u@\h:\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-
 alias l='ls -ltr --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias ld='l | grep ^d'
-alias g='egrep -nir --exclude-dir=node_modules --exclude-dir=.git --color'
+alias g='egrep -nir --exclude-dir=node_modules --exclude-dir=.* --color'
 alias back='node ~/misc/back.js'
 alias v='vi ~/misc/linux.txt'
 alias t='vi ~/todo.txt'
@@ -108,3 +108,5 @@ export PATH=$BUN_INSTALL/bin:$PATH
 # source ble.sh/out/ble.sh
 alias ble='source ~/ble.sh/out/ble.sh'
 
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
