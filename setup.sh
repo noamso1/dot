@@ -12,6 +12,9 @@ cp ~/dot/nanorc ~/.nanorc.conf
 bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
 atuin import auto
 # search for exact text with '
+# command line:
+# atuin search SOMETHING
+# atuin search SOMETHING --delete ###delete entries
 
 #====================nodejs
 installnode #function from .bashrc
