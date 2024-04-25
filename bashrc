@@ -81,6 +81,7 @@ encrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -pass pass:$3 ; }
 decrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -d ; }
 jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git pull ; git push ; }
+gitfeature() { git checkout -b $1 ; git add --all ; git commit -m '$1' ; git push -u origin $1 ; }
 tarex() { tar cvJf ${1:-1.tar.xz} --exclude='.[^/]*' --exclude=node_modules ${2:-*} ; }
 installnode() {
   sudo apt-get update
@@ -97,7 +98,6 @@ installnode() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
