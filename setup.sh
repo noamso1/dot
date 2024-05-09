@@ -1,8 +1,8 @@
-sudo apt update y && sudo apt upgrade -y
+sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y htop curl git tmux nginx docker.io
 
-git clone git@github.com:noamso1/dot.git
-# git clone https://github.com/noamso1/dot.git
+git clone https://github.com/noamso1/dot.git
+# git clone git@github.com:noamso1/dot.git
 
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
@@ -37,14 +37,14 @@ sudo mv /bin/vi /bin/vi.old
 sudo ln -s /squashfs-root/AppRun /bin/vi
 
 ### my config
-apt install gcc unzip ripgrep nodejs npm
+apt install -y gcc unzip ripgrep
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 
-### NvChad
-rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-# comment the 'autopair' section in lua/plugins/init.lua
-# in cmp.lua change CR to C-y
+# ### NvChad
+# rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
+# git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+# # comment the 'autopair' section in lua/plugins/init.lua
+# # in cmp.lua change CR to C-y
 
