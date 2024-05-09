@@ -24,12 +24,12 @@ sudo npm install -g pm2 mongodb json5
 ### install nvim as appimage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
-./nvim.appimage ## check if it works
-sudo mv ./nvim.appimage /bin
-sudo mv /bin/vi /bin/vi.old
-sudo ln -s /bin/nvim.appimage /bin/vi
-
-### SOMETIMES NEED TO
+## check if it works:
+./nvim.appimage
+  sudo mv ./nvim.appimage /bin
+  sudo mv /bin/vi /bin/vi.old
+  sudo ln -s /bin/nvim.appimage /bin/vi
+## SOMETIMES NEED TO
 ./nvim.appimage --appimage-extract
 ./squashfs-root/AppRun --version
 sudo mv squashfs-root /
