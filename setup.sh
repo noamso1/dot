@@ -19,6 +19,7 @@ atuin import auto
 #====================nodejs
 installnode #function from .bashrc
 sudo npm install -g pm2 mongodb json5
+cd ~/dot && npm i json5 && cd -
 
 #=================nvim ===neovim
 ### install nvim as appimage
