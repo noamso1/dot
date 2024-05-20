@@ -8,13 +8,17 @@ cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
 
-# atuin search history
+#=====================atuin search history
 bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
+#or
+#  bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
 atuin import auto
+#sometimes need to add or change in .bashrc:
+#  eval "$(/home/ubuntu/.cargo/bin/atuin init bash)"
 # search for exact text with '
-# command line:
-# atuin search SOMETHING
-# atuin search SOMETHING --delete ###delete entries
+# can search in command line:
+#   atuin search SOMETHING
+#   atuin search SOMETHING --delete ###delete entries
 
 #====================nodejs
 installnode #function from .bashrc
@@ -25,25 +29,25 @@ cd ~/dot && npm i json5 && cd -
 ### install nvim as appimage
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
-## check if it works:
+# check if it works:
 ./nvim.appimage
   sudo mv ./nvim.appimage /bin
   sudo mv /bin/vi /bin/vi.old
   sudo ln -s /bin/nvim.appimage /bin/vi
-## SOMETIMES NEED TO
+# SOMETIMES NEED TO
 ./nvim.appimage --appimage-extract
 ./squashfs-root/AppRun --version
 sudo mv squashfs-root /
 sudo mv /bin/vi /bin/vi.old
 sudo ln -s /squashfs-root/AppRun /bin/vi
 
-### my config
+# my config
 apt install -y gcc unzip ripgrep
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 
-# ### NvChad
+#============== NvChad
 # rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 # git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 # # comment the 'autopair' section in lua/plugins/init.lua
