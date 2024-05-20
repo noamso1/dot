@@ -110,3 +110,6 @@ alias ble='source ~/ble.sh/out/ble.sh'
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+[ -f $HOME/.bashrcadd ] && . $HOME/.bashrcadd
+
