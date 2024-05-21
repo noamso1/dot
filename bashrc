@@ -4,6 +4,7 @@
 
 set -o vi #vi key bindings
 EDITOR='vi'
+
 # PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r" # After each command, append to the history file and reread it
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=-1
@@ -11,6 +12,14 @@ HISTFILESIZE=-1
 HISTTIMEFORMAT="%y-%m-%d %T "
 shopt -s histappend # append to the history file, don't overwrite it
 shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
+
+# HSTR
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+export HSTR_TIOCSTI=y
+export HSTR_CONFIG=prompt-bottom,hicolor,no-confirm,raw-history-view
+# if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi # normal mode
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e0ihstr -- \n"'; fi # vi key bindings mode
+
 bind "\C-l":clear-screen
 bind "\C-p":previous-history
 bind "\C-n":next-history
@@ -111,11 +120,4 @@ export PATH=$BUN_INSTALL/bin:$PATH
 alias ble='source ~/ble.sh/out/ble.sh'
 
 [ -f $HOME/.bashrcadd ] && . $HOME/.bashrcadd
-
-# HSTR
-export HSTR_CONFIG=hicolor       # get more colors
-export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
-export HSTR_TIOCSTI=y
-# if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi # normal mode
-if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e0ihstr -- \C-j"'; fi # vi key bindings mode
 
