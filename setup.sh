@@ -6,7 +6,7 @@ git clone https://github.com/noamso1/dot.git
 
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
-cp ~/dot/nanorc ~/.nanorc.conf
+cp ~/dot/nanorc ~/.nanorc
 
 # ==========hstr
 sudo add-apt-repository ppa:ultradvorka/ppa
