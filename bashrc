@@ -18,7 +18,7 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
 export HSTR_TIOCSTI=y
 export HSTR_CONFIG=prompt-bottom,hicolor,no-confirm,raw-history-view
 # if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi # normal mode
-if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e0ihstr -- \n"'; fi # vi key bindings mode
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e0i hstr -- \n"'; fi # vi key bindings mode
 
 bind "\C-l":clear-screen
 bind "\C-p":previous-history
