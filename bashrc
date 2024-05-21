@@ -86,7 +86,7 @@ alias gcplog='gcloud functions logs read --limit=500 --sort-by=TIME_UTC'
 alias colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 alias ub1='sudo docker run -ti --rm --name ub1 -v ~/Downloads:/Downloads ubuntu /bin/bash'
 alias hh='vi ~/.bash_history'
-c() { export BC_LINE_LENGTH=0; echo "scale=3; $1" | bc; } #calculator
+c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
 encrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -pass pass:$3 ; }
