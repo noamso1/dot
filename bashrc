@@ -6,8 +6,8 @@ set -o vi #vi key bindings
 EDITOR='vi'
 # PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r" # After each command, append to the history file and reread it
 HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=100000
-HISTFILESIZE=200000
+HISTSIZE=1000000
+HISTFILESIZE=2000000
 HISTTIMEFORMAT="%y-%m-%d %T "
 shopt -s histappend # append to the history file, don't overwrite it
 shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
@@ -109,8 +109,8 @@ export PATH=$BUN_INSTALL/bin:$PATH
 # source ble.sh/out/ble.sh
 alias ble='source ~/ble.sh/out/ble.sh'
 
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
+# [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+# eval "$(atuin init bash)"
 
 [ -f $HOME/.bashrcadd ] && . $HOME/.bashrcadd
 
