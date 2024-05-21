@@ -20,6 +20,13 @@ cp ~/dot/nanorc ~/.nanorc.conf
 # #   atuin search SOMETHING
 # #   atuin search SOMETHING --delete ###delete entries
 
+# ==========hstr
+sudo add-apt-repository ppa:ultradvorka/ppa
+sudo apt-get update
+sudo apt-get install hstr
+hstr --show-bash-configuration >> ~/.bashrc
+hh
+
 #====================nodejs
 installnode #function from .bashrc
 sudo npm install -g pm2 mongodb json5
