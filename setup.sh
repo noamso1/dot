@@ -8,24 +8,10 @@ cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc.conf
 
-# #=====================atuin search history
-# bash <(curl https://raw.githubusercontent.com/atuinsh/atuin/main/install.sh)
-# #or
-# #  bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
-# atuin import auto
-# #sometimes need to add or change in .bashrc:
-# #  eval "$(/home/ubuntu/.cargo/bin/atuin init bash)"
-# # search for exact text with '
-# # can search in command line:
-# #   atuin search SOMETHING
-# #   atuin search SOMETHING --delete ###delete entries
-
 # ==========hstr
 sudo add-apt-repository ppa:ultradvorka/ppa
 sudo apt-get update
 sudo apt-get install hstr
-hstr --show-bash-configuration >> ~/.bashrc
-hh
 
 #====================nodejs
 installnode #function from .bashrc

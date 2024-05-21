@@ -109,8 +109,12 @@ export PATH=$BUN_INSTALL/bin:$PATH
 # source ble.sh/out/ble.sh
 alias ble='source ~/ble.sh/out/ble.sh'
 
-# [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-# eval "$(atuin init bash)"
-
 [ -f $HOME/.bashrcadd ] && . $HOME/.bashrcadd
+
+# HSTR
+export HSTR_CONFIG=hicolor       # get more colors
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+export HSTR_TIOCSTI=y
+# if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi # normal mode
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e0ihstr -- \C-j"'; fi # vi key bindings mode
 
