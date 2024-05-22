@@ -1,5 +1,4 @@
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[[ -z "$PS1" ]] && return # If not running interactively, don't do anything
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
 
 set -o vi #vi key bindings
@@ -24,16 +23,15 @@ bind "\C-l":clear-screen
 bind "\C-p":previous-history
 bind "\C-n":next-history
 
-# 1;32m green 1;31m red 1;33m yellow 1;95m purple 1;36m cyan
-#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;95m\]\w\[\033[00m\] '
-
-PS1='\[\e[48;5;239m\]\u@\h:\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour239 fg=colour137 dim' ;
-[[ $HOSTNAME = noam2 ]]           && { PS1='\[\e[48;5;2m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour2 fg=colour137 dim' ; } #local
-[[ $HOSTNAME = noam ]]            && { PS1='\[\e[48;5;3m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour3 fg=colour137 dim' ; } #noamso
-[[ $HOSTNAME = osrm1 ]]           && { PS1='\[\e[48;5;6m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour14 fg=colour137 dim' ; } #test
-[[ $HOSTNAME = ip-172-31-82-23 ]] && { PS1='\[\e[48;5;1m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour1 fg=colour137 dim' ; } #prod
-[[ $HOSTNAME = ip-172-31-85-22 ]] && { PS1='\[\e[48;5;5m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour5 fg=colour137 dim' ; } #maps
-[[ $HOSTNAME = cs-1014835612471-default ]] && { PS1='\[\e[48;5;130m\]\u@\h[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] ' ; [[ -n $TMUX ]] && tmux set -g status-style 'bg=colour130 fg=colour137 dim' ; } #gcpmc1
+co=239
+[[ $HOSTNAME = noam2 ]] && co=2
+[[ $HOSTNAME = noam ]] && co=3
+[[ $HOSTNAME = osrm1 ]] && co=14
+[[ $HOSTNAME = ip-172-31-82-23 ]] && co=1
+[[ $HOSTNAME = ip-172-31-24-98 ]] && co=204
+[[ $HOSTNAME = ip-172-31-85-22 ]] && co=5
+[[ $HOSTNAME = cs-1014835612471-default ]] && co=130
+PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] " ; [[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
 
 alias l='ls -ltr --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
