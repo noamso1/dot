@@ -24,7 +24,8 @@ co=239
 [[ $HOSTNAME = ip-172-31-24-98 ]] && co=204
 [[ $HOSTNAME = ip-172-31-85-22 ]] && co=5
 [[ $HOSTNAME = cs-1014835612471-default ]] && co=130
-PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] " ; [[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
+PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] "
+[[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
 
 alias l='ls -ltr --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
@@ -96,18 +97,4 @@ installnode() {
   sudo apt-get install nodejs -y
   node -v
 }
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
-# # bun
-# export BUN_INSTALL="$HOME/.bun"
-# export PATH=$BUN_INSTALL/bin:$PATH
-#
-# # git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
-# # make -C ble.sh
-# alias ble='source ~/ble.sh/out/ble.sh'
-
-[ -f $HOME/.bashrcadd ] && . $HOME/.bashrcadd
 
