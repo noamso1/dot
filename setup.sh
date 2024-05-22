@@ -8,11 +8,6 @@ cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc
 
-# ==========hstr
-sudo add-apt-repository ppa:ultradvorka/ppa
-sudo apt-get update
-sudo apt-get install hstr
-
 #====================nodejs
 installnode #function from .bashrc
 sudo npm install -g pm2 mongodb json5

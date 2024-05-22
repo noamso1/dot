@@ -12,13 +12,6 @@ HISTTIMEFORMAT="%y-%m-%d %T "
 shopt -s histappend # append to the history file, don't overwrite it
 shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 
-# HSTR
-export PROMPT_COMMAND="history -a ; history -n ; ${PROMPT_COMMAND}"
-export HSTR_TIOCSTI=y
-export HSTR_CONFIG=prompt-bottom,hicolor,no-confirm,raw-history-view
-# if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi # normal mode
-if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e0i hstr -- \n"'; fi # vi key bindings mode
-
 bind "\C-l":clear-screen
 bind "\C-p":previous-history
 bind "\C-n":next-history
