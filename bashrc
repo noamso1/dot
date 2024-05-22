@@ -97,17 +97,17 @@ installnode() {
   node -v
 }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
-
-# git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
-# make -C ble.sh
-alias ble='source ~/ble.sh/out/ble.sh'
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
+# # bun
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH=$BUN_INSTALL/bin:$PATH
+#
+# # git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+# # make -C ble.sh
+# alias ble='source ~/ble.sh/out/ble.sh'
 
 [ -f $HOME/.bashrcadd ] && . $HOME/.bashrcadd
 
