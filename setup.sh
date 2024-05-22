@@ -9,7 +9,7 @@ cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc
 
 #====================nodejs
-installnode #function from .bashrc
+installnode 20 #function from .bashrc
 sudo npm install -g pm2 mongodb json5
 cd ~/dot && npm i json5 && cd -
 
