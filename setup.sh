@@ -19,10 +19,11 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 # check if it works:
 ./nvim.appimage
+# if it works:
   sudo mv ./nvim.appimage /bin
   sudo mv /bin/vi /bin/vi.old
   sudo ln -s /bin/nvim.appimage /bin/vi
-# SOMETIMES NEED TO
+# if not:
 ./nvim.appimage --appimage-extract
 ./squashfs-root/AppRun --version
 sudo mv squashfs-root /
