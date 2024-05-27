@@ -1,6 +1,11 @@
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y htop curl git tmux nginx docker.io
+# curl https://raw.githubusercontent.com/noamso1/dot/master/setup.sh | bash
 
+cd ~
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs
+
+sudo mv /bin/vi /bin/vi.old
+sudo ln -s /bin/nvim /bin/vi
 git clone https://github.com/noamso1/dot.git
 # git clone git@github.com:noamso1/dot.git
 
@@ -8,37 +13,10 @@ cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc
 
-#====================nodejs
-installnode 20 #function from .bashrc
-sudo npm install -g pm2 mongodb json5
+sudo npm install -g pm2 mongodb
 cd ~/dot && npm i json5 && cd -
 
-#=================nvim ===neovim
-### install nvim as appimage
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-# check if it works:
-./nvim.appimage
-# if it works:
-  sudo mv ./nvim.appimage /bin
-  sudo mv /bin/vi /bin/vi.old
-  sudo ln -s /bin/nvim.appimage /bin/vi
-# if not:
-./nvim.appimage --appimage-extract
-./squashfs-root/AppRun --version
-sudo mv squashfs-root /
-sudo mv /bin/vi /bin/vi.old
-sudo ln -s /squashfs-root/AppRun /bin/vi
-
-# my config
 apt install -y gcc unzip ripgrep
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
-
-#============== NvChad
-# rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
-# git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-# # comment the 'autopair' section in lua/plugins/init.lua
-# # in cmp.lua change CR to C-y
-
