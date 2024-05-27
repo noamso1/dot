@@ -1,5 +1,6 @@
 # curl https://raw.githubusercontent.com/noamso1/dot/master/setup.sh | bash
 
+set -e ; set -x
 cd ~
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs
