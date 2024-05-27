@@ -1,7 +1,7 @@
 # curl https://raw.githubusercontent.com/noamso1/dot/master/setup.sh | bash
 set -e ; set -x ; cd ~
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs gcc unzip ripgrep
+sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs npm gcc unzip ripgrep
 sudo mv /bin/vi /bin/vi.old
 sudo ln -s /bin/nvim /bin/vi
 git clone https://github.com/noamso1/dot.git # git clone git@github.com:noamso1/dot.git
