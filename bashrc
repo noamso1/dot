@@ -17,7 +17,7 @@ bind "\C-p":previous-history
 bind "\C-n":next-history
 
 co=239
-[[ $HOSTNAME = noam2 ]] && co=2
+[[ $HOSTNAME = noamso1 ]] && co=2
 [[ $HOSTNAME = noam ]] && co=3
 [[ $HOSTNAME = osrm1 ]] && co=14
 [[ $HOSTNAME = ip-172-31-82-23 ]] && co=1
@@ -43,8 +43,9 @@ alias hardware='lshw'
 alias tm='tmux a || tmux -u' # utf8 support
 alias enc='openssl aes-256-cbc -salt -pbkdf2'
 alias t0='synclient TouchpadOff=1'
-alias t1='synclient TouchpadOff=0 && syndaemon -i 0.4 -K -t -d'
-alias t2='sudo apt purge xserver-xorg-input-synaptics -y && sudo apt autoremove && sudo apt install xserver-xorg-input-synaptics'
+#alias t1='synclient TouchpadOff=0 && syndaemon -i 0.4 -K -t -d'
+#alias t2='sudo apt purge xserver-xorg-input-synaptics -y && sudo apt autoremove && sudo apt install xserver-xorg-input-synaptics'
+alias t1='modprobe psmouse'
 alias archive1='tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
 alias mongo1='sudo docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && sudo docker start mongo1'
 alias mongob='sudo docker exec -it mongo1 bash'
