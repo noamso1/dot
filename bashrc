@@ -1,8 +1,15 @@
 [[ -z "$PS1" ]] && return # If not running interactively, don't do anything
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
 
-set -o vi #vi key bindings
+co=239
+PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] "
+[[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
+
 EDITOR='vi'
+set -o vi #vi key bindings
+bind "\C-l":clear-screen
+bind "\C-p":previous-history
+bind "\C-n":next-history
 
 # PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r" # After each command, append to the history file and reread it
 HISTCONTROL=ignoredups:ignorespace
@@ -11,14 +18,6 @@ HISTFILESIZE=-1
 HISTTIMEFORMAT="%y-%m-%d %T "
 shopt -s histappend # append to the history file, don't overwrite it
 shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
-
-bind "\C-l":clear-screen
-bind "\C-p":previous-history
-bind "\C-n":next-history
-
-co=239
-PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] "
-[[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
 
 alias l='ls -ltr --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
