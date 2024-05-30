@@ -17,13 +17,6 @@ bind "\C-p":previous-history
 bind "\C-n":next-history
 
 co=239
-[[ $HOSTNAME = noamso1 ]] && co=2
-[[ $HOSTNAME = noam ]] && co=3
-[[ $HOSTNAME = osrm1 ]] && co=14
-[[ $HOSTNAME = ip-172-31-82-23 ]] && co=1
-[[ $HOSTNAME = ip-172-31-24-98 ]] && co=204
-[[ $HOSTNAME = ip-172-31-85-22 ]] && co=5
-[[ $HOSTNAME = cs-1014835612471-default ]] && co=130
 PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] "
 [[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
 
@@ -39,12 +32,9 @@ alias ngs='systemctl restart nginx'
 alias ports='sudo lsof -i -P -n | grep LISTEN | grep -E ":[0-9]{2,}" --color'
 alias myip='hostname -I; curl ident.me; echo "\n"'
 alias hardware='lshw'
-#alias clip='xclip -selection c' ### ls | clip
+alias clip='xclip -selection c' ### ls | clip
 alias tm='tmux a || tmux -u' # utf8 support
 alias enc='openssl aes-256-cbc -salt -pbkdf2'
-alias t0='synclient TouchpadOff=1'
-#alias t1='synclient TouchpadOff=0 && syndaemon -i 0.4 -K -t -d'
-#alias t2='sudo apt purge xserver-xorg-input-synaptics -y && sudo apt autoremove && sudo apt install xserver-xorg-input-synaptics'
 alias t1='modprobe -r psmouse'
 alias archive1='tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
 alias mongo1='sudo docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && sudo docker start mongo1'
@@ -53,8 +43,8 @@ alias mongo='sudo docker exec -it mongo1 mongosh' # "mongodb+srv://kiki:XXXXXXXX
 alias redis1='sudo docker run --name redis1 -p 6379:6379 -d redis'
 alias dockerkill='sudo docker rm -f $(sudo docker ps -aq)'
 alias pj='node ~/dot/json5parser.js'
-alias d='node ~/dot/d.js'
 #alias d='echo $(date +"%Y-%m-%d %H:%M:%S")'
+alias d='node ~/dot/d.js'
 alias vil='vi -u NONE -c "set nowrap"' #open large log files without extentions
 alias nvimsave='tar cvJf ~/dot/nvim_config.tar.xz --exclude='.[^/]*' -C ~/.config/nvim .'
 alias nvimload='tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim'
@@ -79,6 +69,7 @@ alias gcplog='gcloud functions logs read --limit=500 --sort-by=TIME_UTC'
 alias colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 alias ub1='sudo docker run -ti --rm --name ub1 -v ~/Downloads:/Downloads ubuntu /bin/bash'
 alias hh='vi ~/.bash_history'
+
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
