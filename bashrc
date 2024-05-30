@@ -84,10 +84,15 @@ encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
 encrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -pass pass:$3 ; }
 decrf() { openssl aes-256-cbc -salt -pbkdf2 -in $1 -out $2 -d ; }
+tarenc() { tar cvJ ${@:1:$#-2} | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -out ${@: -2:1} ; } ### tar and encrypt ### tarenc infile.txt moreinfiles.* outfile pass
+tardec() { openssl aes-256-cbc -salt -pbkdf2 -in ${1} -pass pass:${2} -d | tar xJ ; } ### tardec file pass
+tarenct() { tar cvJ ${@:1:$#-2} | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -a -out ${@: -2:1} ; } ### tar and encrypt to text ### tarenc infile.txt moreinfiles.* outfile pass
+tardect() { openssl aes-256-cbc -salt -pbkdf2 -in ${1} -pass pass:${2} -a -d | tar xJ ; } # tardec file pass
+tarex() { tar cvJf ${1:-1.tar.xz} --exclude='.[^/]*' --exclude=node_modules ${2:-*} ; }
 jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git pull ; git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
-tarex() { tar cvJf ${1:-1.tar.xz} --exclude='.[^/]*' --exclude=node_modules ${2:-*} ; }
+
 installnode() {
   sudo apt-get update
   sudo apt-get install -y ca-certificates curl gnupg
