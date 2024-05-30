@@ -1,7 +1,7 @@
 [[ -z "$PS1" ]] && return # If not running interactively, don't do anything
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
 
-co=239
+co=${co:-239}
 PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] "
 [[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
 
