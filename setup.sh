@@ -12,6 +12,7 @@ git clone https://github.com/noamso1/dot.git # git clone git@github.com:noamso1/
 cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc
+cp ~/dot/gitconfig ~/.gitconfig
 
 sudo npm install -g pm2 mongodb
 cd ~/dot && npm i json5 && cd -

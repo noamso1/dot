@@ -1,0 +1,7 @@
+[user]
+	email =
+	name =
+[core]
+	editor = vi
+[color "diff"]
+  meta = black yellow
