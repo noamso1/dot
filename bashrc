@@ -37,11 +37,11 @@ alias tm='tmux a || tmux -u' # utf8 support
 alias enc='openssl aes-256-cbc -salt -pbkdf2'
 alias t1='modprobe -r psmouse'
 alias archive1='tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
-alias mongo1='sudo docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && sudo docker start mongo1'
-alias mongob='sudo docker exec -it mongo1 bash'
-alias mongo='sudo docker exec -it mongo1 mongosh' # "mongodb+srv://kiki:XXXXXXXX@moovexprodcluster.au6ui.mongodb.net"
-alias redis1='sudo docker run --name redis1 -p 6379:6379 -d redis'
-alias dockerkill='sudo docker rm -f $(sudo docker ps -aq) ; docker volume rm $( docker volume ls -q ) ; #docker rmi $(docker images -q)'
+alias mongo1='docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && docker start mongo1'
+alias mongob='docker exec -it mongo1 bash'
+alias mongo='docker exec -it mongo1 mongosh' # "mongodb+srv://kiki:XXXXXXXX@moovexprodcluster.au6ui.mongodb.net"
+alias redis1='docker run --name redis1 -p 6379:6379 -d redis'
+alias dockerkill='docker rm -f $(docker ps -aq) ; # docker volume rm $( docker volume ls -q ) ; docker rmi $(docker images -q)'
 alias pj='node ~/dot/json5parser.js'
 #alias d='echo $(date +"%Y-%m-%d %H:%M:%S")'
 alias d='node ~/dot/d.js'
