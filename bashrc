@@ -24,7 +24,7 @@ alias l='ls -ltr --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-director
 alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias ld='l | grep ^d'
 alias g='egrep -nirs --exclude-dir=node_modules --exclude-dir=.* --color'
-alias back='node ~/misc/back.js'
+alias back='bash ~/misc/back.sh'
 alias v='vi ~/misc/linux.txt'
 alias t='vi ~/todo.txt'
 alias ngi='sudo vi /etc/nginx/conf.d/server.conf'
