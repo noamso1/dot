@@ -100,3 +100,5 @@ installnode() {
   sudo npm i -g pm2
 }
 
+eval "$(zoxide init bash)"
+

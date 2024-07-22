@@ -3,7 +3,7 @@
 set -e ; set -x ; cd ~
 
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs npm gcc unzip ripgrep jq
+sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs npm gcc unzip ripgrep jq zoxide
 #sudo usermod -aG docker user
 
 sudo mv /bin/vi /bin/vi.old
