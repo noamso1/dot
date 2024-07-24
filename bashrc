@@ -74,6 +74,8 @@ alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
+alias mo1='sudo xhost +SI:localuser:mo && sudo su mo' #grand mo access to display and clipboard, and swithc to mo
+alias mo0='xhost -SI:localuser:mo' # disable display access for mo
 
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
