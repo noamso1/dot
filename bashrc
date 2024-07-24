@@ -73,6 +73,7 @@ alias ub1='docker run -ti --rm --name ub1 -v ~/Downloads:/Downloads ubuntu /bin/
 alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
+alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
 
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
