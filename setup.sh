@@ -22,4 +22,3 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 
-
