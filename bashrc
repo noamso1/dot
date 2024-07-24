@@ -52,7 +52,6 @@ alias nvimsave='tar cvJf ~/dot/nvim_config.tar.xz --exclude='.[^/]*' -C ~/.confi
 alias nvimload='tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim'
 alias st='ssh -i ~/.ssh/maps.cer root@test.moovex.com'
 alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
-alias sa='ssh -i ~/.ssh/maps.cer ubuntu@ssh.node.moovex.com'
 alias s2='ssh -i ~/.ssh/noamso4.pem ubuntu@18.233.128.80'
 alias sn='ssh root@noamso.one'
 alias sg='gcloud cloud-shell ssh --authorize-session'
@@ -74,8 +73,8 @@ alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
-alias mo1='sudo xhost +SI:localuser:mo && sudo su mo' #grand mo access to display and clipboard, and swithc to mo
-alias mo0='xhost -SI:localuser:mo' # disable display access for mo
+# alias mo1='sudo xhost +SI:localuser:mo && sudo su mo' #grant mo access to display and clipboard, and switch to mo user
+# alias mo0='xhost -SI:localuser:mo' # disable display access for mo
 
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
