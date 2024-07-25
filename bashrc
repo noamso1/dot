@@ -51,7 +51,7 @@ alias vil='vi -u NONE -c "set nowrap"' #open large log files without extentions
 alias nvimsave='tar cvJf ~/dot/nvim_config.tar.xz --exclude='.[^/]*' -C ~/.config/nvim .'
 alias nvimload='tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim'
 alias xfcesave='tar cvJf ~/dot/xfce_config.tar.xz -C ~/.config/xfce4/xfconf/xfce-perchannel-xml .'
-alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml'
+alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml'
 alias st='ssh -i ~/.ssh/maps.cer root@test.moovex.com'
 alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
 alias s2='ssh -i ~/.ssh/noamso4.pem ubuntu@18.233.128.80'
