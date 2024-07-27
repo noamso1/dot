@@ -22,3 +22,9 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
 mkdir -p ~/.config/nvim
 tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 
+# === nerdfont icons and symbols in terminal
+# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip ## -L follow redirects
+# unzip ~/Downloads/nerd.zip *.ttf -d ~/.local/share/fonts
+# fc-cache -f
+
+# xfceload
