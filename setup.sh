@@ -28,3 +28,15 @@ tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 # fc-cache -f
 
 # xfceload
+
+# sudo snap install chromium
+# install adblock
+# chrome://settings/content/notifications - Don't allow sites to send notifications
+# chrome://settings/searchEngines / add /
+#   b chrome://bookmarks/?q=%s
+#   h chrome://history/?q=%s
+#   y https://www.youtube.com/results?search_query=%s
+#   m https://www.google.com/maps/search/%s
+#   c https://chat.openai.com/?q=%s
+#   t https://translate.google.com/?source=osdd&sl=auto&tl=en&text=%s&op=translate
+
