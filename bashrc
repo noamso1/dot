@@ -75,6 +75,7 @@ alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
+alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
 # alias mo1='sudo xhost +SI:localuser:mo && sudo su mo' #grant mo access to display and clipboard, and switch to mo user
 # alias mo0='xhost -SI:localuser:mo' # disable display access for mo
 
@@ -105,4 +106,3 @@ installnode() {
 }
 
 #eval "$(zoxide init bash --cmd cd)"
-
