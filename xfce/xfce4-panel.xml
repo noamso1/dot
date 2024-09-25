@@ -40,6 +40,7 @@
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="whiskermenu">
       <property name="recent" type="array">
+        <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="xfce-mouse-settings.desktop"/>
         <value type="string" value="chromium_chromium.desktop"/>
         <value type="string" value="virt-manager.desktop"/>
@@ -49,7 +50,6 @@
         <value type="string" value="org.remmina.Remmina.desktop"/>
         <value type="string" value="xfce-wmtweaks-settings.desktop"/>
         <value type="string" value="xfce-wm-settings.desktop"/>
-        <value type="string" value="xfce4-file-manager.desktop"/>
       </property>
     </property>
     <property name="plugin-2" type="string" value="separator">
