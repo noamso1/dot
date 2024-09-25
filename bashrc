@@ -53,7 +53,7 @@ alias nvimload='tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim'
 
 # alias xfcesave='tar cvJf ~/dot/xfce_config.tar.xz -C ~/.config/xfce4/xfconf/xfce-perchannel-xml . && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
 # alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
-alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce && rm ~/dot/xfce/displays.xml && xfce4-panel-profiles save ~/dot/xfce/xfce4-panel.tar.gz'
+alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce && rm ~/dot/xfce/displays.xml && rm ~/dot/xfce/parole.xml && xfce4-panel-profiles save ~/dot/xfce/xfce4-panel.tar.gz'
 alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce/xfce4-panel.tar.gz && xfce4-panel & '
 
 alias st='ssh -i ~/.ssh/maps.cer root@test.moovex.com'
