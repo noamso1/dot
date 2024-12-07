@@ -1,3 +1,17 @@
+# settings: filevault, hide dock, input languages, fast user switch
+
+# mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+
+# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/UbuntuMono.zip -o ~/Downloads/nerd.zip
+# cd ~/Downloads && unzip nerd.zip
+
+# GIT_SSH_COMMAND='ssh -i ~/.ssh/noam_moovex -o IdentitiesOnly=yes' git clone git@github.com:Moovex/moovex_server.git
+# git config core.sshCommand 'ssh -i ~/.ssh/noamso_moovex'
+
+[[ -z "$PS1" ]] && return # If not running interactively, don't do anything
+[[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
+[[ -n $TMUX ]] && tmux set -g status-style "bg=colour2 fg=colour137 dim"
+
 export PS1="%F{yellow}%n %F{cyan}%~ %F{white}> "
 
 EDITOR='nvim'
@@ -12,16 +26,6 @@ SAVEHIST=10000000
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '^R' history-incremental-search-backward
-
-# settings: filevault, hide dock, input languages, fast user switch
-
-# mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-
-# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/UbuntuMono.zip -o ~/Downloads/nerd.zip
-# cd ~/Downloads && unzip nerd.zip
-
-# GIT_SSH_COMMAND='ssh -i ~/.ssh/noam_moovex -o IdentitiesOnly=yes' git clone git@github.com:Moovex/moovex_server.git
-# git config core.sshCommand 'ssh -i ~/.ssh/noamso_moovex'
 
 export PATH="/Users/mo/homebrew/bin:$PATH"
 
