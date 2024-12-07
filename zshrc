@@ -8,6 +8,8 @@
 # GIT_SSH_COMMAND='ssh -i ~/.ssh/noam_moovex -o IdentitiesOnly=yes' git clone git@github.com:Moovex/moovex_server.git
 # git config core.sshCommand 'ssh -i ~/.ssh/noamso_moovex'
 
+# brew install --cask google-cloud-sdk
+
 [[ -z "$PS1" ]] && return # If not running interactively, don't do anything
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
 [[ -n $TMUX ]] && tmux set -g status-style "bg=colour2 fg=colour137 dim"
