@@ -13,7 +13,7 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '^R' history-incremental-search-backward
 
-# settings: file vault, hide dock, input languages, fast user switch
+# settings: filevault, hide dock, input languages, fast user switch
 
 # mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 
