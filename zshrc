@@ -11,6 +11,7 @@
 
 # brew install --cask google-cloud-sdk
 
+umask 0077
 export PATH="/Users/${USER}/homebrew/bin:$PATH"
 
 [[ -z "$PS1" ]] && return # If not running interactively, don't do anything
