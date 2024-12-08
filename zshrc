@@ -11,6 +11,8 @@
 
 # brew install --cask google-cloud-sdk
 
+export PATH="/Users/mo/homebrew/bin:$PATH"
+
 [[ -z "$PS1" ]] && return # If not running interactively, don't do anything
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
 [[ -n $TMUX ]] && tmux set -g status-style "bg=colour2 fg=colour137 dim"
@@ -29,8 +31,6 @@ SAVEHIST=10000000
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '^R' history-incremental-search-backward
-
-export PATH="/Users/mo/homebrew/bin:$PATH"
 
 alias vi='nvim'
 alias l='ls -ltr'
