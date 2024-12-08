@@ -11,7 +11,7 @@
 
 # brew install --cask google-cloud-sdk
 
-export PATH="/Users/mo/homebrew/bin:$PATH"
+export PATH="/Users/${USER}/homebrew/bin:$PATH"
 
 [[ -z "$PS1" ]] && return # If not running interactively, don't do anything
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
