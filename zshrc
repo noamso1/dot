@@ -9,6 +9,9 @@
 # GIT_SSH_COMMAND='ssh -i ~/.ssh/noamso_moovex -o IdentitiesOnly=yes' git clone git@github.com:Moovex/moovex_server.git
 # git config core.sshCommand 'ssh -i ~/.ssh/noamso_moovex'
 
+# GIT_SSH_COMMAND='ssh -i ~/.ssh/noam_mc1_rsa -o IdentitiesOnly=yes' git clone git@ssh.dev.azure.com:v3/MC1Projects/WTM%20IRS/ire-dashboard
+# git config core.sshCommand 'ssh -i ~/.ssh/noam_mc1_rsa'
+
 # brew install --cask google-cloud-sdk
 
 umask 0077
