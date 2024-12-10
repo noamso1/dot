@@ -91,8 +91,8 @@ alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-t
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
-encrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -pass pass:$3 ; }
-decrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -d ; }
+encrf() { [ -z "$3" ] && echo "usage: encrf in.txt out.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -pass pass:$3 ; }
+decrf() { [ -z "$2" ] && echo "usage: decrf in.txt out.txt" || openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -d ; }
 tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@[1,-3]}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@[-1]} -out "${@[-2]}" ; }
 tardec() { [ -z "$2" ] && echo "usage: tardec file.aaa pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -d | tar xJ ; }
 tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@[1,-3]}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@[-1]} -a -out "${@[-2]}" ; } ### tar and encrypt to text
