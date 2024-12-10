@@ -6,7 +6,7 @@
 # curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/UbuntuMono.zip -o ~/Downloads/nerd.zip
 # cd ~/Downloads && unzip nerd.zip
 
-# GIT_SSH_COMMAND='ssh -i ~/.ssh/noam_moovex -o IdentitiesOnly=yes' git clone git@github.com:Moovex/moovex_server.git
+# GIT_SSH_COMMAND='ssh -i ~/.ssh/noamso_moovex -o IdentitiesOnly=yes' git clone git@github.com:Moovex/moovex_server.git
 # git config core.sshCommand 'ssh -i ~/.ssh/noamso_moovex'
 
 # brew install --cask google-cloud-sdk
@@ -93,10 +93,10 @@ encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
 encrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -pass pass:$3 ; }
 decrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -d ; }
-tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -out "${@: -2:1}" ; }
+tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@[1,-3]}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@[-1]} -out "${@[-2]}" ; }
 tardec() { [ -z "$2" ] && echo "usage: tardec file.aaa pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -d | tar xJ ; }
-tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -a -out "${@: -2:1}" ; } ### tar and encrypt to text
-tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; } # tardec file pass
+tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@[1,-3]}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@[-1]} -a -out "${@[-2]}" ; } ### tar and encrypt to text
+tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; }
 tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "${2:-*}" ; }
 jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git push ; }
