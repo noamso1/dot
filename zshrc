@@ -1,5 +1,12 @@
 
-# settings: filevault, hide dock, input languages, fast user switch, keyboard brightness in menu bar, disable force click
+### SETTINGS ###
+# filevault
+# hide dock
+# input languages
+# fast user switch
+# keyboard brightness in menu bar
+# disable force click
+# zoom - use scroll gesture
 
 # mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 
