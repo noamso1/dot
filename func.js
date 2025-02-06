@@ -12,7 +12,7 @@ global.cl = function( a ) {
 }
 
 //-----------------------------------------
-global.showDate = function(d) {
+global.showDate = function(d) { // show local time string
   if (!d) d = new Date();
   let t, r = '';
   r += d.getFullYear();
@@ -158,8 +158,6 @@ global.dec = function(thetext, thepass) {
     return ''
   }
 }
-
-//---------------------------------------------------
 
 global.isEmail = function(e) {
   let r = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
