@@ -11,6 +11,10 @@ global.cl = function( a ) {
   }
 }
 
+global.jsonl = function( o ) {
+  for ( let a of o ) console.log(JSON.stringify(a) + ',')
+}
+
 //-----------------------------------------
 global.showDate = function(d) { // show local time string
   if (!d) d = new Date();
