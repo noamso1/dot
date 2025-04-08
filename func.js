@@ -11,6 +11,11 @@ global.cl = function( a ) {
   }
 }
 
+global.ex = function( a ) {
+  cl( a )
+  process.exit()
+}
+
 global.jsonl = function( o ) {
   for ( let a of o ) console.log(JSON.stringify(a) + ',')
 }
