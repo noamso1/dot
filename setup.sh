@@ -39,4 +39,4 @@ tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim
 #   m https://www.google.com/maps/search/%s
 #   c https://chat.openai.com/?q=%s
 #   t https://translate.google.com/?source=osdd&sl=auto&tl=en&text=%s&op=translate
-
+#   z https://www.zap.co.il/search.aspx?keyword=%s
