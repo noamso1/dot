@@ -427,4 +427,13 @@ global.lastLine = function( f, pos ) {
   return { line, pos: pos }
 }
 
-
+// // example of promise all tasks with chunks
+// let tasks = [], aa = [ 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 ]
+// for ( let a of aa ) {
+//   let u = 'http://localhost:8888/?s=' + a
+//   tasks.push({ type: 'test', u, promise: fetchText(u) })
+// }
+// for ( let i = 0; i < tasks.length; i += 20 ) {
+//   let results = await Promise.all(tasks.slice( i, i + 20 ).map((e) => e.promise))
+//   for (let j = 0; j < results.length; j++) { tasks[i + j].result = results[j] }
+// }
