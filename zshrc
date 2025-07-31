@@ -70,8 +70,8 @@ alias pj='node ~/dot/json5parser.js'
 #alias d='echo $(date +"%Y-%m-%d %H:%M:%S")'
 alias d='node ~/dot/d.js'
 alias vil='vi -u NONE -c "set nowrap"' #open large log files without extentions
-alias nvimsave="tar cvJf ~/dot/nvim_config.tar.xz --exclude='**/.*' -C ~/.config/nvim ."
-alias nvimload='tar xf ~/dot/nvim_config.tar.xz -C ~/.config/nvim'
+alias nvimsave='cp -R ~/.config/nvim ~/dot'
+alias nvimload='cp -R ~/dot/nvim ~/.config'
 
 alias st='ssh -i ~/.ssh/maps.cer root@test.moovex.com'
 alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
