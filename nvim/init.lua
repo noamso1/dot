@@ -46,3 +46,4 @@ vim.api.nvim_set_hl(0, 'GitSignsChangeDelete', { fg = '#fd971f' })
 vim.api.nvim_set_hl(0, 'GitSignsUntracked', { fg = '#cfcfcf' })
 
 vim.opt.swapfile = false
+
