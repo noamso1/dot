@@ -10,6 +10,7 @@ set -o vi #vi key bindings
 bind "\C-l":clear-screen
 bind "\C-p":previous-history
 bind "\C-n":next-history
+bind "\C-e":edit-and-execute-command
 stty -ixon # disable ctrl-s freeze
 
 # PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r" # After each command, append to the history file and reread it
