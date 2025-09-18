@@ -3,7 +3,7 @@
 set -e ; set -x ; cd ~
 
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs npm gcc unzip ripgrep jq # docker-compose-v2
+sudo apt install -y htop curl git tmux nginx docker.io neovim nodejs npm gcc unzip ripgrep jq chromium
 sudo usermod -aG docker $(whoami)
 
 sudo mv /bin/vi /bin/vi.old
@@ -14,13 +14,8 @@ cp ~/dot/bashrc ~/.bashrc
 cp ~/dot/tmux.conf ~/.tmux.conf
 cp ~/dot/nanorc ~/.nanorc
 cp ~/dot/gitconfig ~/.gitconfig
-
-sudo npm install -g pm2 mongodb
 cd ~/dot && npm i json5 && cd -
-
-rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim
-mkdir -p ~/.config/nvim
-cp -R ~/dot/nvim ~/.config
+rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
 # === nerdfont icons and symbols in terminal
 # curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip ## -L follow redirects
