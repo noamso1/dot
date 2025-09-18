@@ -427,6 +427,64 @@ global.lastLine = function( f, pos ) {
   return { line, pos: pos }
 }
 
+global.csv2json = function(csv) {
+  csv = csv.replace(/\r/g, '')
+  let lines = csv.split("\n")
+  let result = []
+  let headers = splitQuotes(lines[0]).map( e => e.trim() )
+  for (let i = 1; i < lines.length; i++) {
+    if ( lines[i] ) {
+      let obj = {}
+      let line = splitQuotes(lines[i])
+      for (let j = 0; j < headers.length; j++) {
+        obj[headers[j]] = line[j]
+      }
+      result.push(obj)
+    }
+  }
+  return result
+
+  function splitQuotes(line) {
+    if (line.indexOf('"') < 0) return line.split(',')
+    let result = [],
+      cell = '',
+      quote = false;
+    for (let i = 0; i < line.length; i++) {
+      let char = line[i]
+      if (char == '"' && line[i + 1] == '"') {
+        cell += char
+        i++
+      } else if (char == '"') {
+        quote = !quote;
+      } else if (!quote && char == ',') {
+        result.push(cell)
+        cell = ''
+      } else {
+        cell += char
+      }
+      if (i == line.length - 1 && cell) {
+        result.push(cell)
+      }
+    }
+    return result
+  }
+}
+
+global.json2csv = function( data ) {
+  if ( data.length == 0 ) return ''
+  let csv = '', headers = Object.keys( data[0] )
+  for ( let key in headers ) { csv += quoteIfNeeded(headers[key]) + ',' }; csv += '\n'
+  for ( let item of data ) {
+    for ( let key of headers ) { csv += quoteIfNeeded(item[key]) + ',' }
+    csv += '\n'
+  }
+  return csv
+  function quoteIfNeeded( v ) {
+    if ( typeof v == 'string' && ( v.indexOf(',') >= 0 || v.indexOf('"') >= 0 ) ) return '"' + v.replace(/"/g, '""') + '"'
+    return v
+  }
+}
+
 // // example of promise all tasks with chunks
 // let tasks = [], aa = [ 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 ]
 // for ( let a of aa ) {
@@ -437,3 +495,4 @@ global.lastLine = function( f, pos ) {
 //   let results = await Promise.all(tasks.slice( i, i + 20 ).map((e) => e.promise))
 //   for (let j = 0; j < results.length; j++) { tasks[i + j].result = results[j] }
 // }
+
