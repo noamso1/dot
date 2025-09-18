@@ -43,45 +43,11 @@
       <property name="XF86Music" type="empty"/>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xfce4-session-logout"/>
-      <property name="&lt;Super&gt;f" type="string" value="exo-open --launch FileManager"/>
-      <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
-      <property name="&lt;Super&gt;w" type="string" value="exo-open --launch WebBrowser"/>
-      <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
-      <property name="&lt;Super&gt;r" type="string" value="xfrun4">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
-      <property name="XF86Music" type="string" value="rhythmbox"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
-      <property name="&lt;Alt&gt;F2" type="string" value="xfrun4">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
-      <property name="XF86Explorer" type="string" value="exo-open --launch FileManager"/>
-      <property name="&lt;Super&gt;m" type="string" value="exo-open --launch MailReader"/>
-      <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-whiskermenu"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager"/>
-      <property name="&lt;Alt&gt;&lt;Super&gt;s" type="string" value="orca"/>
-      <property name="XF86Calculator" type="string" value="mate-calc"/>
-      <property name="&lt;Super&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
-      <property name="XF86HomePage" type="string" value="exo-open --launch WebBrowser"/>
-      <property name="HomePage" type="string" value="exo-open --launch WebBrowser"/>
-      <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
-      <property name="&lt;Super&gt;F1" type="string" value="xfce4-find-cursor"/>
-      <property name="&lt;Alt&gt;Pause" type="string" value="xfce4-popup-whiskermenu"/>
-      <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
-      <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -r"/>
-      <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Super&gt;e" type="string" value="exo-open --launch FileManager"/>
-      <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xfce4-session-logout --suspend"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;BackSpace" type="string" value="xfce4-session-logout --suspend"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;e" type="string" value="xfce4-terminal -x bash -c &apos;vi&apos;"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;c" type="string" value="mate-calculator"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;x" type="string" value="xfce4-screenshooter -r"/>
@@ -91,9 +57,10 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;m" type="string" value="amixer set Capture toggle"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;f" type="string" value="thunar Downloads"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;j" type="string" value="bash /home/noamso/misc/brightness.sh d"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;u" type="string" value="bash /home/noamso/misc/brightness.sh u"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;o" type="string" value="xflock4"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;j" type="string" value="bash /home/noam/dot/brightness.sh d"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;u" type="string" value="bash /home/noam/dot/brightness.sh u"/>
+      <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-whiskermenu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

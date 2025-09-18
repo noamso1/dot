@@ -24,7 +24,6 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 
 # xfceload
 
-# sudo snap install chromium
 # install adblock
 # chrome://settings/content/notifications - Don't allow sites to send notifications
 # chrome://settings/searchEngines / add /
