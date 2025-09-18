@@ -28,9 +28,9 @@
       <property name="autohide-behavior" type="uint" value="0"/>
       <property name="enable-struts" type="bool" value="true"/>
       <property name="background-rgba" type="array">
-        <value type="double" value="0.23921568627450981"/>
-        <value type="double" value="0.2196078431372549"/>
-        <value type="double" value="0.27450980392156865"/>
+        <value type="double" value="0.46666666666666667"/>
+        <value type="double" value="0.46274509803921571"/>
+        <value type="double" value="0.4823529411764706"/>
         <value type="double" value="1"/>
       </property>
     </property>
@@ -39,12 +39,13 @@
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="whiskermenu">
       <property name="recent" type="array">
+        <value type="string" value="xfce-ui-settings.desktop"/>
+        <value type="string" value="xfce-wmtweaks-settings.desktop"/>
         <value type="string" value="chromium.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="xfce-mouse-settings.desktop"/>
         <value type="string" value="xfce4-power-manager-settings.desktop"/>
         <value type="string" value="xfce4-clipman.desktop"/>
-        <value type="string" value="xfce-wmtweaks-settings.desktop"/>
         <value type="string" value="xfce-wm-settings.desktop"/>
       </property>
     </property>

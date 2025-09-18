@@ -2,8 +2,8 @@
 
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
-    <property name="ThemeName" type="string" value="Numix"/>
-    <property name="IconThemeName" type="empty"/>
+    <property name="ThemeName" type="string" value="Adwaita"/>
+    <property name="IconThemeName" type="string" value="Tango"/>
     <property name="DoubleClickTime" type="empty"/>
     <property name="DoubleClickDistance" type="empty"/>
     <property name="DndDragThreshold" type="empty"/>
@@ -16,7 +16,7 @@
   </property>
   <property name="Xft" type="empty">
     <property name="DPI" type="empty"/>
-    <property name="Antialias" type="empty"/>
+    <property name="Antialias" type="int" value="1"/>
     <property name="Hinting" type="empty"/>
     <property name="HintStyle" type="empty"/>
     <property name="RGBA" type="empty"/>
@@ -29,8 +29,8 @@
     <property name="MonospaceFontName" type="empty"/>
     <property name="IconSizes" type="empty"/>
     <property name="KeyThemeName" type="empty"/>
-    <property name="MenuImages" type="empty"/>
-    <property name="ButtonImages" type="empty"/>
+    <property name="MenuImages" type="bool" value="false"/>
+    <property name="ButtonImages" type="bool" value="false"/>
     <property name="MenuBarAccel" type="empty"/>
     <property name="CursorThemeName" type="string" value="DMZ-White"/>
     <property name="CursorThemeSize" type="int" value="30"/>

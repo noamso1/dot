@@ -9,7 +9,7 @@
   <property name="color-bold" type="string" value=""/>
   <property name="color-bold-use-default" type="bool" value="true"/>
   <property name="color-palette" type="string" value="#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec"/>
-  <property name="font-name" type="string" value="Monospace 11"/>
+  <property name="font-name" type="string" value="Monospace 10"/>
   <property name="tab-activity-color" type="string" value="#aa0000"/>
   <property name="cell-height-scale" type="double" value="1"/>
   <property name="color-background-vary" type="bool" value="false"/>
