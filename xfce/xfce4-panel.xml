@@ -16,6 +16,7 @@
         <value type="int" value="5"/>
         <value type="int" value="8"/>
         <value type="int" value="9"/>
+        <value type="int" value="7"/>
         <value type="int" value="10"/>
         <value type="int" value="11"/>
         <value type="int" value="12"/>
@@ -39,16 +40,16 @@
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="whiskermenu">
       <property name="recent" type="array">
-        <value type="string" value="chromium.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
-        <value type="string" value="xfce-backdrop-settings.desktop"/>
+        <value type="string" value="audacity.desktop"/>
+        <value type="string" value="xfce4-taskmanager.desktop"/>
+        <value type="string" value="virt-manager.desktop"/>
+        <value type="string" value="chromium.desktop"/>
         <value type="string" value="xfce-display-settings.desktop"/>
-        <value type="string" value="xfce-ui-settings.desktop"/>
-        <value type="string" value="xfce-wmtweaks-settings.desktop"/>
-        <value type="string" value="xfce-mouse-settings.desktop"/>
         <value type="string" value="xfce4-power-manager-settings.desktop"/>
-        <value type="string" value="xfce4-clipman.desktop"/>
-        <value type="string" value="xfce-wm-settings.desktop"/>
+        <value type="string" value="xfce-ui-settings.desktop"/>
+        <value type="string" value="firefox-esr.desktop"/>
+        <value type="string" value="xfce-backdrop-settings.desktop"/>
       </property>
     </property>
     <property name="plugin-2" type="string" value="separator">
@@ -74,10 +75,11 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="enable-mpris" type="bool" value="true"/>
       <property name="enable-wnck" type="bool" value="true"/>
-      <property name="known-players" type="string" value="Chromium;firefox;org.gnome.Rhythmbox3;parole;vlc"/>
+      <property name="known-players" type="string" value="Chromium;firefox;firefox-esr;org.gnome.Rhythmbox3;parole;vlc"/>
       <property name="mixer-command" type="string" value="pavucontrol"/>
       <property name="persistent-players" type="string" value="parole;org.gnome.Rhythmbox3"/>
       <property name="show-notifications" type="bool" value="true"/>
+      <property name="rec-indicator-persistent" type="bool" value="true"/>
     </property>
     <property name="plugin-10" type="string" value="clock">
       <property name="digital-format" type="string" value=" %d %b, %H:%M "/>
@@ -100,6 +102,7 @@
         <value type="string" value="nm-applet"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="ethernet network connection “wired connection 1” active"/>
         <value type="string" value="clipman"/>
@@ -107,6 +110,7 @@
       </property>
     </property>
     <property name="plugin-12" type="string" value="showdesktop"/>
+    <property name="plugin-7" type="string" value="xfce4-clipman-plugin"/>
   </property>
   <property name="configver" type="int" value="2"/>
 </channel>

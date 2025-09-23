@@ -31,4 +31,6 @@
   <property name="misc-hyperlinks-enabled" type="bool" value="true"/>
   <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_SOLID"/>
   <property name="background-darkness" type="double" value="0.5"/>
+  <property name="font-allow-bold" type="bool" value="true"/>
+  <property name="misc-borders-default" type="bool" value="true"/>
 </channel>
