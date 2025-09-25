@@ -3,7 +3,7 @@
 set -e ; set -x ; cd ~
 
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y htop curl git tmux docker.io neovim nodejs npm gcc unzip ripgrep jq chromium
+sudo apt install -y htop curl git tmux docker.io neovim nodejs npm gcc unzip ripgrep jq
 sudo usermod -aG docker $(whoami)
 
 sudo mv /bin/vi /bin/vi.old
@@ -16,6 +16,9 @@ cp ~/dot/nanorc ~/.nanorc
 cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
+
+# ===========graphical
+# sudo apt install -y chromium gimp audacity transmission libreoffice-calc libreoffice-writer
 
 # === nerdfont icons and symbols in terminal
 # curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip ## -L follow redirects
