@@ -27,6 +27,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # install adblock
 # chrome://settings/content/notifications - Don't allow sites to send notifications
 # chrome://settings/searchEngines / add /
+#   g https://www.google.com/search?q=%s
 #   b chrome://bookmarks/?q=%s
 #   h chrome://history/?q=%s
 #   y https://www.youtube.com/results?search_query=%s
