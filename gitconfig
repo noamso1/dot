@@ -1,7 +1,13 @@
 [user]
-  email =
-  name =
+  email = noamso@gmail.com
+  name = noamso
 [core]
   editor = vi
 [color "diff"]
   meta = black yellow
+  commit = bold reverse blue
+[color "decorate"]
+  branch = bold green
+  remoteBranch = bold cyan
+  tag = bold yellow
+  commit = bold reverse blue
