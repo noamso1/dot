@@ -79,6 +79,7 @@ alias ub1='docker run -ti --rm --name ub1 -v ~/Downloads:/Downloads ubuntu /bin/
 alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
+gb() { git fetch && git checkout -b $1 origin/$1 ; }
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
 alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
 # alias mo1='sudo xhost +SI:localuser:mo && sudo su mo' #grant mo access to display and clipboard, and switch to mo user
