@@ -39,9 +39,3 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 #   t https://translate.google.com/?source=osdd&sl=auto&tl=en&text=%s&op=translate
 #   z https://www.zap.co.il/search.aspx?keyword=%s
 
-
-#### if external monitor is not waking up
-# sudo mkdir /lib/systemd/system-sleep
-# sudo cp ~/dot/monitor.sh /lib/systemd/system-sleep
-# sudo chmod +x /lib/systemd/system-sleep/monitor.sh
-
