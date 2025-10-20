@@ -496,3 +496,9 @@ global.json2csv = function( data ) {
 //   for (let j = 0; j < results.length; j++) { tasks[i + j].result = results[j] }
 // }
 
+// // example of nanoseconds runtime
+// let XXX1 = process.hrtime.bigint();
+// // ..... code ....
+// let XXX2 = process.hrtime.bigint();
+// let XXXdur = Number(XXX2 - XXX1)/1000000
+
