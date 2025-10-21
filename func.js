@@ -486,13 +486,12 @@ global.json2csv = function( data ) {
 }
 
 // code benchmark in nanosecond resolution, every call gives milliseconds past from last call
-global.milliTimer = {}
+global.milliTimerBuf = {}
 global.milliTimer = function( a ) {
-  let prev = global.milliTimer[a]
-  global.milliTimer[a] = process.hrtime.bigint();
-  if ( prev ) {
-    return Number( process.hrtime.bigint() - prev ) / 1000000
-  }
+  let now = process.hrtime.bigint();
+  let prev = global.milliTimerBuf[a]
+  global.milliTimerBuf[a] = now
+  if ( prev ) return Number( now - prev ) / 1000000
 }
 
 // // example of promise all tasks with chunks
