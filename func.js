@@ -485,6 +485,16 @@ global.json2csv = function( data ) {
   }
 }
 
+// code benchmark in nanosecond resolution, every call gives milliseconds past from last call
+global.milliTimer = {}
+global.milliTimer = function( a ) {
+  let prev = global.milliTimer[a]
+  global.milliTimer[a] = process.hrtime.bigint();
+  if ( prev ) {
+    return Number( process.hrtime.bigint() - prev ) / 1000000
+  }
+}
+
 // // example of promise all tasks with chunks
 // let tasks = [], aa = [ 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 ]
 // for ( let a of aa ) {
@@ -495,10 +505,4 @@ global.json2csv = function( data ) {
 //   let results = await Promise.all(tasks.slice( i, i + 20 ).map((e) => e.promise))
 //   for (let j = 0; j < results.length; j++) { tasks[i + j].result = results[j] }
 // }
-
-// // example of nanoseconds runtime
-// let XXX1 = process.hrtime.bigint();
-// // ..... code ....
-// let XXX2 = process.hrtime.bigint();
-// let XXXdur = Number(XXX2 - XXX1)/1000000
 
