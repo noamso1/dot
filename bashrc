@@ -60,7 +60,7 @@ alias xfceload='cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pk
 alias engine="export DEBUG_ENGINE=true; export TS_NODE_COMPILER_OPTIONS='{\"lib\":[\"esnext\",\"dom\"]}'; cd ~/moovex_development/moovex_new_server; npx ts-node ./src/components/routing/core/engine.ts"
 alias st='ssh -i ~/.ssh/maps.cer root@test.moovex.com'
 alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
-alias sm2='ssh -i ~/.ssh/maps.cer root@ec2-13-220-194-9.compute-1.amazonaws.com'
+alias sm2='ssh -i ~/.ssh/maps.cer root@ec2-34-201-173-180.compute-1.amazonaws.com'
 alias s2='ssh -i ~/.ssh/noamso4.pem ubuntu@18.233.128.80'
 alias sn='ssh root@noamso.one'
 alias sg='gcloud cloud-shell ssh --authorize-session'
