@@ -56,8 +56,6 @@ alias nvimload='cp -R ~/dot/nvim ~/.config'
 # alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
 alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce'
 alias xfceload='cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel & '
-
-alias engine="export DEBUG_ENGINE=true; export TS_NODE_COMPILER_OPTIONS='{\"lib\":[\"esnext\",\"dom\"]}'; cd ~/moovex_development/moovex_new_server; npx ts-node ./src/components/routing/core/engine.ts"
 alias st='ssh -i ~/.ssh/maps.cer root@test.moovex.com'
 alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
 alias sm2='ssh -i ~/.ssh/maps.cer root@ec2-34-201-173-180.compute-1.amazonaws.com'
@@ -83,9 +81,8 @@ alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
 alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
-# alias mo1='sudo xhost +SI:localuser:mo && sudo su mo' #grant mo access to display and clipboard, and switch to mo user
-# alias mo0='xhost -SI:localuser:mo' # disable display access for mo
 
+engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/moovex_development/moovex_new_server && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
@@ -100,16 +97,3 @@ jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
 
-installnode() {
-  sudo apt-get update
-  sudo apt-get install -y ca-certificates curl gnupg
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${1:-20}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-  sudo apt-get update
-  sudo apt-get install nodejs -y
-  node -v
-  sudo npm i -g pm2
-}
-
-#eval "$(zoxide init bash --cmd cd)"
