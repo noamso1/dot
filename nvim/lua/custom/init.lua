@@ -44,6 +44,11 @@ vim.keymap.set("n", "X", "V\"_x") -- delete line without cut
 -- vim.keymap.set("x", "j", "j") --disable some stupid nvchad mappings ( no need - done in mappings.lua )
 -- vim.keymap.set("x", "k", "k") --disable some stupid nvchad mappings ( no need - done in mappings.lua )
 
+-- prettier
+vim.keymap.set("n", "<leader>F", function()
+  require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format file with Prettier" })
+
 vim.cmd("autocmd BufEnter * set formatoptions-=cro") -- disable auto comment next line
 vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro") -- disable auto comment next line
 -- vim.cmd("autocmd VimEnter * NvimTreeToggle") -- disable auto comment next line

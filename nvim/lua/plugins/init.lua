@@ -278,6 +278,36 @@ local default_plugins = {
     end,
   },
 
+  {
+    -- npm i prettier
+    "stevearc/conform.nvim",
+    event = "BufWritePre",
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          json = { "prettier" },
+          html = { "prettier" },
+          css = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+        },
+        -- -- optionally, you can auto-format on save:
+        -- format_on_save = function(bufnr)
+        --   -- Disable autoformat for files in node_modules
+        --   local bufname = vim.api.nvim_buf_get_name(bufnr)
+        --   if bufname:match("/node_modules/") then
+        --     return
+        --   end
+        --   return { timeout_ms = 3000, lsp_fallback = true }
+        -- end,
+      })
+    end,
+  },
+
 }
 
 local config = require("core.utils").load_config()
