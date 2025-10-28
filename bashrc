@@ -94,6 +94,6 @@ tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || t
 tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; } # tardec file pass
 tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "${2:-*}" ; }
 jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
-gitpush() { git add --all ; git commit -a -m "${1:-.}" ; git push ; }
+gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
 
