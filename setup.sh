@@ -17,6 +17,12 @@ cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
+# ====ngnix with https
+# sudo apt install nginx certbot python3-certbot-nginx -y
+# sudo certbot --nginx -d mydomain.com
+# sudo nginx -t
+# sudo systemctl reload nginx
+
 # ===========graphical
 # sudo apt install -y chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc
 
