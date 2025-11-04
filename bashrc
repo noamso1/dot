@@ -60,7 +60,6 @@ alias st='ssh -i ~/.ssh/noamso_moovex root@142.93.199.90'
 alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
 alias sm2='ssh -i ~/.ssh/maps.cer root@ec2-34-201-173-180.compute-1.amazonaws.com'
 alias s2='ssh -i ~/.ssh/noamso4.pem ubuntu@18.233.128.80'
-alias sn='ssh root@noamso.one'
 alias sg='gcloud cloud-shell ssh --authorize-session'
 alias vnctunnel='ssh -L 5901:localhost:5901 -N -C root@noamso.one'
 alias toascii='od -An -vtu1' #hex
