@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="displays" version="1.0">
-  <property name="ActiveProfile" type="string" value="febe1752-e1ff-4481-87f7-64b92b89fdcc"/>
+  <property name="ActiveProfile" type="string" value="Default"/>
   <property name="Notify" type="int" value="1"/>
   <property name="AutoEnableProfiles" type="int" value="3"/>
   <property name="424df6cd-b4ab-4640-bb91-961aac306b32" type="empty">
@@ -47,27 +47,7 @@
       <property name="RefreshRate" type="double" value="59.950171286203677"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
-      <property name="Primary" type="bool" value="true"/>
-      <property name="Scale" type="double" value="1"/>
-      <property name="Position" type="empty">
-        <property name="X" type="int" value="0"/>
-        <property name="Y" type="int" value="0"/>
-      </property>
-    </property>
-  </property>
-  <property name="febe1752-e1ff-4481-87f7-64b92b89fdcc" type="string" value="1">
-    <property name="eDP-1" type="string" value="Laptop">
-      <property name="Active" type="bool" value="false"/>
-      <property name="EDID" type="string" value="86fc5a98ab291f8db30127a092de8f91b36e2855"/>
-    </property>
-    <property name="DP-1" type="string" value="AUS 24&quot;">
-      <property name="Active" type="bool" value="true"/>
-      <property name="EDID" type="string" value="64130fde4e2da43b81edc2b0d725c48ecd1b2842"/>
-      <property name="Resolution" type="string" value="1920x1200"/>
-      <property name="RefreshRate" type="double" value="59.950171286203677"/>
-      <property name="Rotation" type="int" value="0"/>
-      <property name="Reflection" type="string" value="0"/>
-      <property name="Primary" type="bool" value="true"/>
+      <property name="Primary" type="bool" value="false"/>
       <property name="Scale" type="double" value="1"/>
       <property name="Position" type="empty">
         <property name="X" type="int" value="0"/>
