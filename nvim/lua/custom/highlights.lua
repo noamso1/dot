@@ -8,7 +8,12 @@ local M = {}
 M.override = {
   Comment = {
     italic = false,
+    fg = '#666666',
   },
+  ['@comment'] = {
+        italic = false,
+        fg = '#666666',
+    },
   -- IndentBlanklineContextStart = {
   --   bg = 'none',
   --   underline = false,
