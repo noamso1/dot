@@ -13,18 +13,18 @@ M.override = {
   ['@comment'] = {
         italic = false,
         fg = '#666666',
-    },
-  -- IndentBlanklineContextStart = {
-  --   bg = 'none',
-  --   underline = false,
-  -- },
+  },
   Search = {
     bg = 'black',
     fg = 'white',
     bold = true
   },
-  -- Visual = {
-  --   bg = '#444444',
+  Visual = {
+    bg = '#222288',
+  },
+  -- IndentBlanklineContextStart = {
+  --   bg = 'none',
+  --   underline = false,
   -- },
   -- NvimTreeCursorLine = {
   --   bg = '#444444',
