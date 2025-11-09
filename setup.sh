@@ -24,7 +24,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo systemctl reload nginx
 
 # ===========graphical
-# sudo apt install -y chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc
+# sudo apt install -y chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
 
 # === nerdfont icons and symbols in terminal
 # curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip ## -L follow redirects

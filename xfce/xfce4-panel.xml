@@ -40,16 +40,16 @@
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="whiskermenu">
       <property name="recent" type="array">
-        <value type="string" value="org.remmina.Remmina.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="chromium.desktop"/>
-        <value type="string" value="firefox-esr.desktop"/>
         <value type="string" value="virt-manager.desktop"/>
-        <value type="string" value="libreoffice-writer.desktop"/>
-        <value type="string" value="nm-connection-editor.desktop"/>
+        <value type="string" value="blueman-adapters.desktop"/>
+        <value type="string" value="xfce-settings-manager.desktop"/>
+        <value type="string" value="xfce4-settings-editor.desktop"/>
         <value type="string" value="xfce4-power-manager-settings.desktop"/>
-        <value type="string" value="xfce-display-settings.desktop"/>
-        <value type="string" value="xfce4-terminal-emulator.desktop"/>
+        <value type="string" value="org.remmina.Remmina.desktop"/>
+        <value type="string" value="firefox-esr.desktop"/>
+        <value type="string" value="libreoffice-writer.desktop"/>
       </property>
     </property>
     <property name="plugin-2" type="string" value="separator">
