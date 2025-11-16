@@ -41,6 +41,8 @@ alias archive1='tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* * && 
 alias mongo1='docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && docker start mongo1'
 alias mongob='docker exec -it mongo1 bash'
 alias mongosh='docker exec -it mongo1 mongosh'
+alias pg1='docker stop postgres1 ; docker rm postgres1 ; docker run -d --name postgres1 -e POSTGRES_USER=user -e POSTGRES_PASSWORD=1 -e POSTGRES_DB=db1 -p 5432:5432 -v ~/postgres_data:/var/lib/postgresql postgres:latest'
+alias pgsh='PGPASSWORD=1 docker exec -it postgres1 psql -U user -d db1'
 alias redis1='docker run --name redis1 -p 6379:6379 -d redis'
 alias dockerkill1='docker rm -f $(docker ps -aq)'
 alias dockerkill2='docker rm -f $(docker ps -aq) ; docker volume rm $( docker volume ls -q )'
