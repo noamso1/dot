@@ -11,3 +11,6 @@
   remoteBranch = bold cyan
   tag = bold yellow
   commit = bold reverse blue
+[push]
+	default = current
+	autoSetupRemote = always
