@@ -13,4 +13,4 @@
   commit = bold reverse blue
 [push]
 	default = current
-	autoSetupRemote = always
+	autoSetupRemote = true
