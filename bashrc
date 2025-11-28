@@ -24,6 +24,7 @@ shopt -s checkwinsize # check the window size after each command and, if necessa
 alias l='ls -ltr --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group-directories-first --block-size="'"'"'1"'
 alias ld='l | grep ^d'
+alias dirsize='du -sb | cut -f1 | numfmt --grouping'
 alias g='egrep -nirs --exclude-dir=node_modules --exclude-dir=.* --color'
 alias back='bash ~/misc/back.sh'
 alias v='vi ~/misc/linux.txt'
