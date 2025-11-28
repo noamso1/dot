@@ -5,4 +5,7 @@
     <property name="sort-type" type="uint" value="1"/>
     <property name="sort-id" type="uint" value="6"/>
   </property>
+  <property name="window-maximized" type="bool" value="false"/>
+  <property name="window-width" type="int" value="986"/>
+  <property name="window-height" type="int" value="785"/>
 </channel>

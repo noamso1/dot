@@ -2,7 +2,7 @@
 
 <channel name="xfce4-terminal" version="1.0">
   <property name="color-foreground" type="string" value="#ffffff"/>
-  <property name="color-background" type="string" value="#000000"/>
+  <property name="color-background" type="string" value="#000000000000"/>
   <property name="color-cursor" type="string" value=""/>
   <property name="color-selection" type="string" value=""/>
   <property name="color-selection-use-default" type="bool" value="true"/>

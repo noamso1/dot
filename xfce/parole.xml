@@ -5,12 +5,14 @@
     <property name="font" type="string" value="Sans Bold 20"/>
   </property>
   <property name="folders" type="empty">
-    <property name="last-used-media" type="string" value="/home/noam/Downloads/Matchstick Men (2003) [1080p]"/>
+    <property name="last-used-media" type="string" value="/tmp/xa-YNISG3"/>
   </property>
   <property name="window" type="empty">
     <property name="maximized" type="bool" value="false"/>
+    <property name="width" type="int" value="931"/>
+    <property name="height" type="int" value="669"/>
   </property>
   <property name="audio" type="empty">
-    <property name="volume" type="int" value="50"/>
+    <property name="volume" type="int" value="100"/>
   </property>
 </channel>

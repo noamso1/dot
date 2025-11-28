@@ -41,14 +41,14 @@
     <property name="plugin-1" type="string" value="whiskermenu">
       <property name="recent" type="array">
         <value type="string" value="xfce-keyboard-settings.desktop"/>
-        <value type="string" value="chromium.desktop"/>
         <value type="string" value="virt-manager.desktop"/>
-        <value type="string" value="blueman-adapters.desktop"/>
-        <value type="string" value="xfce-settings-manager.desktop"/>
-        <value type="string" value="xfce4-settings-editor.desktop"/>
-        <value type="string" value="xfce4-power-manager-settings.desktop"/>
-        <value type="string" value="org.remmina.Remmina.desktop"/>
-        <value type="string" value="firefox-esr.desktop"/>
+        <value type="string" value="xfce4-taskmanager.desktop"/>
+        <value type="string" value="xfce4-mail-reader.desktop"/>
+        <value type="string" value="libreoffice-calc.desktop"/>
+        <value type="string" value="chromium.desktop"/>
+        <value type="string" value="audacity.desktop"/>
+        <value type="string" value="xfce-wm-settings.desktop"/>
+        <value type="string" value="system-config-printer.desktop"/>
         <value type="string" value="libreoffice-writer.desktop"/>
       </property>
     </property>
@@ -75,7 +75,7 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="enable-mpris" type="bool" value="true"/>
       <property name="enable-wnck" type="bool" value="true"/>
-      <property name="known-players" type="string" value="Chromium;firefox;firefox-esr;org.gnome.Rhythmbox3;parole;vlc"/>
+      <property name="known-players" type="string" value="Chromium;firefox;firefox-esr;JBL Flip 5;org.gnome.Rhythmbox3;parole;vlc"/>
       <property name="mixer-command" type="string" value="pavucontrol"/>
       <property name="persistent-players" type="string" value="parole;org.gnome.Rhythmbox3"/>
       <property name="show-notifications" type="bool" value="true"/>
