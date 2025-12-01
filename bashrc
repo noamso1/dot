@@ -38,8 +38,8 @@ alias clip='xclip -selection c' ### ls | clip
 alias tm='tmux a || tmux -u' # utf8 support
 alias enc='openssl aes-256-cbc -salt -pbkdf2'
 alias t1='modprobe -r psmouse'
-alias arc='rm 1.aaa ; tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
-alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")"; f="${f//\//.}"; f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamso_moovex ${f}.aaa root@142.93.199.90:/root/back;'
+alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
+alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamso_moovex ${f}.aaa root@142.93.199.90:/root/back && rm ${f}.aaa ;'
 alias mongo1='docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && docker start mongo1'
 alias mongob='docker exec -it mongo1 bash'
 alias mongosh='docker exec -it mongo1 mongosh'
