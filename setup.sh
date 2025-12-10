@@ -27,6 +27,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo apt install -y chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
 
 # === nerdfont icons and symbols in terminal
+# sudo apt install fonts-noto-color-emoji ### maybe this is enough !!
 # curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip ## -L follow redirects
 # unzip ~/Downloads/nerd.zip *.ttf -d ~/.local/share/fonts
 # fc-cache -f
