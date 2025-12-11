@@ -121,6 +121,10 @@ global.fetchText = async function ( params ) {
   return res
 }
 
+global.rand = function(m) { // m = 3 will return 0-2
+  return Math.floor(Math.random() * m)
+}
+
 global.randomString = function(length, chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890') {
   let pass = ''
   for (let x = 0; x < length; x++) {
@@ -344,10 +348,6 @@ global.isSame = function( a, b ) {
 
 global.sleep = async function( ms ) {
   await new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-global.rand = function(min, max) { // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 global.hasMatch = function( aa, bb ) {
