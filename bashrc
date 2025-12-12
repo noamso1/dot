@@ -55,8 +55,11 @@ alias d='node ~/dot/d.js'
 alias vil='vi -u NONE -c "set nowrap"' #open large log files without extentions
 alias nvimsave='cp -R ~/.config/nvim ~/dot'
 alias nvimload='cp -R ~/dot/nvim ~/.config'
-alias wifi0='nmcli radio wifi off'
-alias wifi1='nmcli radio wifi on'
+alias wifi_on='nmcli radio wifi off'
+alias wifi_off='nmcli radio wifi on'
+alias wifi_list='nmcli dev wifi'
+alias wifi_connect='nmcli dev wifi connect' # network_nam password password
+alias wifi_disconnect='nmcli con down id'
 # alias xfcesave='tar cvJf ~/dot/xfce_config.tar.xz -C ~/.config/xfce4/xfconf/xfce-perchannel-xml . && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
 # alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
 alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce'
