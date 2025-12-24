@@ -89,6 +89,7 @@ alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
 alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
+export PL=~/Platform/apps/fleet-backend
 export PB=~/Platform/apps/fleet-backend/src/components/routing/core/pb.json
 engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/moovex_development/moovex_new_server && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
