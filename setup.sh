@@ -26,8 +26,8 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # ===========graphical
 # mkdir -p ~/.local/share/fonts
 # cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts
-# fc-cache -f
 # sudo apt install -y fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
+# fc-cache -f
 # xfceload
 
 # ======chromium todo
