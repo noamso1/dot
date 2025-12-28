@@ -24,16 +24,13 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo systemctl reload nginx
 
 # ===========graphical
-# sudo apt install -y chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
-
-# === nerdfont icons and symbols in terminal
-# sudo apt install fonts-noto-color-emoji ### maybe this is enough !!
-# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip ## -L follow redirects
+# xfceload
+# sudo apt install -y fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
+# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Ubuntu.zip -o ~/Downloads/nerd.zip
 # unzip ~/Downloads/nerd.zip *.ttf -d ~/.local/share/fonts
 # fc-cache -f
 
-# xfceload
-
+# ======chromium todo
 # install adblock
 # chrome://settings/content/notifications - Don't allow sites to send notifications
 # chrome://settings/searchEngines / add /
