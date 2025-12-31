@@ -39,8 +39,8 @@ function decode(token, secret = null) {
     } catch (e) {
       console.log("❌ Signature Verification Failed:", e.message);
     }
-  } else {
-    console.log("⚠️  No secret provided: Signature not checked.");
+  // } else {
+  //   console.log("⚠️  No secret provided: Signature not checked.");
   }
 }
 
