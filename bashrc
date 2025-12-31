@@ -91,6 +91,9 @@ alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n"
 alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
 export PL=~/Platform/apps/fleet-backend
 export PB=~/Platform/apps/fleet-backend/src/components/routing/core/pb.json
+#jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
+alias jwte='node ~/dot/jwt.js e'
+alias jwtd='node ~/dot/jwt.js d'
 engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/moovex_development/moovex_new_server && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
@@ -102,7 +105,6 @@ tardec() { [ -z "$2" ] && echo "usage: tardec file.aaa pass" || openssl aes-256-
 tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -a -out "${@: -2:1}" ; } ### tar and encrypt to text
 tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; } # tardec file pass
 tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "${2:-*}" ; }
-jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
 
