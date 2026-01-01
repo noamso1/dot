@@ -45,8 +45,8 @@ function decode(token, secret = null) {
 }
 
 if (command === 'e') {
-  if ( !args[1] ) { console.log( 'jwte payloadString secret' ); process.exit() }
-  encode('{}', args[0], args[1]);
+  if ( !args[0] ) { console.log( 'jwte payloadString secret' ); process.exit() }
+  encode('{}', args[0], args[1] || '1');
 } else if (command === 'd') {
   if ( !args[0] ) { console.log( 'jwtd jwtString secret' ); process.exit() }
   decode(args[0], args[1]);
