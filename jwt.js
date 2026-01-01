@@ -1,6 +1,6 @@
 // alias jwte='node ~/dot/jwt.js e'
 // alias jwtd='node ~/dot/jwt.js d'
-// jwte '{"head":123}' '{"payload":1}' '111'
+// jwte '{"payload":1}' '111'
 // jwtd eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImhlYWQiOjEyM30.eyJwYXlsb2FkIjoxLCJpYXQiOjE3NjcxODY0NTZ9.r_ZYwhqfjqLgz0AKmMzQuxA0OStHO_arN-46P1xAZwQ 111
 
 const jwt = require('jsonwebtoken');
@@ -45,8 +45,8 @@ function decode(token, secret = null) {
 }
 
 if (command === 'e') {
-  if ( !args[2] ) { console.log( 'jwte headString payloadString secret' ); process.exit() }
-  encode(args[0], args[1], args[2]);
+  if ( !args[1] ) { console.log( 'jwte headString payloadString secret' ); process.exit() }
+  encode('{}', args[0], args[1]);
 } else if (command === 'd') {
   if ( !args[0] ) { console.log( 'jwtd jwtString secret' ); process.exit() }
   decode(args[0], args[1]);
