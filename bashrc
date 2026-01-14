@@ -103,7 +103,7 @@ decrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -d ; }
 tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -out "${@: -2:1}" ; }
 tardec() { [ -z "$2" ] && echo "usage: tardec file.aaa pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -d | tar xJ ; }
 tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -a -out "${@: -2:1}" ; } ### tar and encrypt to text
-tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; } # tardec file pass
+tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; }
 tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "${2:-*}" ; }
 gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
