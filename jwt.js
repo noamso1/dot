@@ -1,11 +1,8 @@
-// alias jwte='node ~/dot/jwt.js e'
-// alias jwtd='node ~/dot/jwt.js d'
-// jwte '{"payload":1}' '111'
-// jwtd eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImhlYWQiOjEyM30.eyJwYXlsb2FkIjoxLCJpYXQiOjE3NjcxODY0NTZ9.r_ZYwhqfjqLgz0AKmMzQuxA0OStHO_arN-46P1xAZwQ 111
+// alias jwt='node ~/dot/jwt.js'
+// jwt '{"payload":1}' 111
+// jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImhlYWQiOjEyM30.eyJwYXlsb2FkIjoxLCJpYXQiOjE3NjcxODY0NTZ9.r_ZYwhqfjqLgz0AKmMzQuxA0OStHO_arN-46P1xAZwQ 111
 
 const jwt = require('jsonwebtoken');
-
-const [,, command, ...args] = process.argv;
 
 function encode(headerStr, payloadStr, secret) {
   try {
@@ -44,11 +41,12 @@ function decode(token, secret = null) {
   }
 }
 
-if (command === 'e') {
-  if ( !args[0] ) { console.log( 'jwte payloadString secret' ); process.exit() }
-  encode('{}', args[0], args[1] || '1');
-} else if (command === 'd') {
-  if ( !args[0] ) { console.log( 'jwtd jwtString secret' ); process.exit() }
-  decode(args[0], args[1]);
+const ar = process.argv
+if ( !ar[2] ) { console.log( 'jwt payload secret' ); process.exit() }
+try {
+  let j = JSON.parse(ar[2])
+  encode('{}', ar[2], ar[3] || '1');
+} catch(e) {
+  decode(ar[2], ar[3]);
 }
 
