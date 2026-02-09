@@ -475,7 +475,7 @@ global.json2csv = function( data ) {
   let csv = '', headers = Object.keys( data[0] )
   for ( let key in headers ) { csv += quoteIfNeeded(headers[key]) + ',' }; csv += '\n'
   for ( let item of data ) {
-    for ( let key of headers ) { csv += quoteIfNeeded(item[key]) + ',' }
+    for ( let key of headers ) { csv += quoteIfNeeded( item[key] === undefined ? '' : item[key] ) + ',' }
     csv += '\n'
   }
   return csv
