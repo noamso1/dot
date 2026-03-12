@@ -17,20 +17,20 @@ cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
-# ====ngnix with https
+# ======ngnix with https
 # sudo apt install nginx certbot python3-certbot-nginx -y
 # sudo certbot --nginx -d mydomain.com
 # sudo nginx -t
 # sudo systemctl reload nginx
 
-# ===========graphical
+# ======graphical
 # mkdir -p ~/.local/share/fonts
 # cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts
 # sudo apt install -y fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
 # fc-cache -f
 # xfceload
 
-# ======chromium todo
+# ======chromium
 # install adblock
 # chrome://settings/content/notifications - Don't allow sites to send notifications
 # chrome://settings/searchEngines / add /
