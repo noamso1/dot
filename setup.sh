@@ -18,7 +18,7 @@ cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
 # ======ngnix with https
-# sudo apt install nginx certbot python3-certbot-nginx -y
+# sudo apt install xfce4-panel-profiles nginx certbot python3-certbot-nginx -y
 # sudo certbot --nginx -d mydomain.com
 # sudo nginx -t
 # sudo systemctl reload nginx
