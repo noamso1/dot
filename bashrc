@@ -94,7 +94,7 @@ export PL=~/Platform/apps/fleet-backend
 export PB=~/Platform/apps/fleet-backend/src/components/routing/core/pb.json
 #jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
-engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/moovex_development/moovex_new_server && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }
+engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/Platform/apps/fleet-backend && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
