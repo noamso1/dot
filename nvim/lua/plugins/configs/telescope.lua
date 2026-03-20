@@ -15,12 +15,12 @@ local options = {
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
-    sorting_strategy = "ascending",
+    sorting_strategy = "descending",
     layout_strategy = "horizontal",
     layout_config = {
       horizontal = {
-        prompt_position = "top",
-        preview_width = 0.55,
+        prompt_position = "bottom",
+        preview_width = 0.5,
         results_width = 0.8,
       },
       vertical = {
