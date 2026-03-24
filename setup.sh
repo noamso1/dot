@@ -18,7 +18,7 @@ cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
 # ======ngnix with https
-# sudo apt install xfce4-panel-profiles nginx certbot python3-certbot-nginx -y
+# sudo apt install nginx certbot python3-certbot-nginx -y
 # sudo certbot --nginx -d mydomain.com
 # sudo nginx -t
 # sudo systemctl reload nginx
@@ -26,7 +26,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # ======graphical
 # mkdir -p ~/.local/share/fonts
 # cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts
-# sudo apt install -y fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
+# sudo apt install -y xfce4-panel-profiles fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
 # fc-cache -f
 # xfceload
 
