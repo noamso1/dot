@@ -39,8 +39,8 @@
   <property name="plugins" type="empty">
     <property name="plugin-1" type="string" value="whiskermenu">
       <property name="recent" type="array">
-        <value type="string" value="chromium.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
+        <value type="string" value="chromium.desktop"/>
         <value type="string" value="virt-manager.desktop"/>
         <value type="string" value="gimp.desktop"/>
         <value type="string" value="xfce-wm-settings.desktop"/>

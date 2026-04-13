@@ -63,6 +63,7 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
       <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;v" type="string" value="virt-manager"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;w" type="string" value="chromium"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
