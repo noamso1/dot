@@ -43,3 +43,9 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 #   t https://translate.google.com/?source=osdd&sl=auto&tl=en&text=%s&op=translate
 #   z https://www.zap.co.il/search.aspx?keyword=%s
 
+# =======qemu/kvm
+# sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients virt-manager
+# sudo adduser $USER libvirt
+# sudo adduser $USER libvirt-quemu
+# sudo adduser $USER kvm
+# reboot
