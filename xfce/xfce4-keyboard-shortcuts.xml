@@ -43,9 +43,7 @@
       <property name="XF86Music" type="empty"/>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xfce4-session-logout"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;e" type="string" value="xfce4-terminal -x bash -c &apos;vi&apos;"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;c" type="string" value="mate-calculator"/>
@@ -64,6 +62,8 @@
       <property name="Super_L" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;v" type="string" value="virt-manager"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;w" type="string" value="chromium"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;0" type="string" value="xrandr --output eDP-1 --auto --output DP-1 --off"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;9" type="string" value="xrandr --output DP-1 --auto --output eDP-1 --off"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
