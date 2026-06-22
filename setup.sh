@@ -3,7 +3,9 @@
 set -e ; set -x ; cd ~
 
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y htop curl git tmux docker.io neovim nodejs npm gcc unzip ripgrep jq rsync cron
+sudo apt install -y htop curl git tmux docker.io neovim gcc unzip ripgrep jq rsync cron
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt-get install -y nodejs
 sudo usermod -aG docker $(whoami)
 
 sudo mv /bin/vi /bin/vi.old
