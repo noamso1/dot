@@ -93,6 +93,7 @@ alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n"
 alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
 export PL=~/Platform/apps/fleet-backend
 export PB=~/Platform/apps/fleet-backend/src/components/routing/core/pb.json
+export CLAUDE_CODE_DISABLE_MOUSE=1
 #jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
 engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/Platform/apps/fleet-backend && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }

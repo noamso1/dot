@@ -51,3 +51,5 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo adduser $USER libvirt-quemu
 # sudo adduser $USER kvm
 # reboot
+
+curl -fsSL https://claude.ai/install.sh | bash
