@@ -53,6 +53,6 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # reboot
 
 # curl -fsSL https://claude.ai/install.sh | bash
-# GIT_SSH_COMMAND='ssh -i ~/.ssh/noamorq -o IdentitiesOnly=yes' git clone git@github.com:noam-orq/orq.git                                                                                                          
+# GIT_SSH_COMMAND='ssh -i ~/.ssh/noamorq -o IdentitiesOnly=yes' git clone git@github.com:noam-orq/orq.git
 # git config core.sshCommand 'ssh -i ~/.ssh/noamorq'
 
