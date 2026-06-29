@@ -19,7 +19,7 @@ cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
-# ======ngnix with https
+# ======ngnix with https ( first connect provider domain to ip )
 # sudo apt install nginx certbot python3-certbot-nginx -y
 # sudo certbot --nginx -d mydomain.com
 # sudo nginx -t
