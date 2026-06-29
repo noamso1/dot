@@ -19,6 +19,15 @@ cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
+# ========ufw
+# sudo apt install ufw
+# sudo ufw allow 22/tcp
+# sudo ufw allow 80/tcp
+# sudo ufw allow 443/tcp
+# sudo ufw allow 3000/tcp
+# sudo ufw enable
+# sudo ufw status
+
 # ======ngnix with https ( first connect provider domain to ip )
 # sudo apt install nginx certbot python3-certbot-nginx -y
 # sudo certbot --nginx -d mydomain.com
