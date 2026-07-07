@@ -28,7 +28,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo ufw enable
 # sudo ufw status
 
-# ======caddy - https - simpler than nginx
+# ======caddy https ( simple ) ( first connect provider domain to ip )
 # ...first point the DNS to the vm's ip
 # sudo apt install caddy
 # sudo vi /etc/caddy/Caddyfile
@@ -40,6 +40,12 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 #   reverse_proxy 127.0.0.1:3000
 # }
 # sudo systemctl reload caddy
+# ======ngnix https ( best performance ) ( first connect provider domain to ip )
+# sudo apt install nginx certbot python3-certbot-nginx -y
+# sudo certbot --nginx -d mydomain.com
+# sudo vi /etc/nginx/sites-available/default
+# sudo nginx -t
+# sudo systemctl reload nginx
 
 # ======graphical
 # mkdir -p ~/.local/share/fonts
