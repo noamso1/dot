@@ -28,11 +28,18 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo ufw enable
 # sudo ufw status
 
-# ======ngnix with https ( first connect provider domain to ip )
-# sudo apt install nginx certbot python3-certbot-nginx -y
-# sudo certbot --nginx -d mydomain.com
-# sudo nginx -t
-# sudo systemctl reload nginx
+# ======caddy - https - simpler than nginx
+# ...first point the DNS to the vm's ip
+# sudo apt install caddy
+# sudo vi /etc/caddy/Caddyfile
+# pub.noamso.one {
+#   root * /usr/share/caddy
+#   file_server
+# }
+# app.noamso.one {
+#   reverse_proxy 127.0.0.1:3000
+# }
+# sudo systemctl reload caddy
 
 # ======graphical
 # mkdir -p ~/.local/share/fonts
