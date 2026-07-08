@@ -49,7 +49,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 
 # ======graphical
 # mkdir -p ~/.local/share/fonts
-# cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts
+# cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts ### IN TERMUX COPY TO ~/.termux/font.ttf
 # sudo apt install -y xfce4-panel-profiles fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
 # fc-cache -f
 # xfceload
