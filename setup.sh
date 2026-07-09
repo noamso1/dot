@@ -47,6 +47,13 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo nginx -t
 # sudo systemctl reload nginx
 
+# ====claude
+# curl -fsSL https://claude.ai/install.sh | bash
+
+# ====git with dif key
+# GIT_SSH_COMMAND='ssh -i ~/.ssh/noamorq -o IdentitiesOnly=yes' git clone git@github.com:noam-orq/orq.git
+# git config core.sshCommand 'ssh -i ~/.ssh/noamorq'
+
 # ======graphical
 # mkdir -p ~/.local/share/fonts
 # cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts ### IN TERMUX COPY TO ~/.termux/font.ttf
@@ -73,11 +80,4 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo adduser $USER libvirt-quemu
 # sudo adduser $USER kvm
 # reboot
-
-# ====claude
-# curl -fsSL https://claude.ai/install.sh | bash
-
-# ====git with dif key
-# GIT_SSH_COMMAND='ssh -i ~/.ssh/noamorq -o IdentitiesOnly=yes' git clone git@github.com:noam-orq/orq.git
-# git config core.sshCommand 'ssh -i ~/.ssh/noamorq'
 
