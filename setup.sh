@@ -75,6 +75,13 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 #   t https://translate.google.com/?source=osdd&sl=auto&tl=en&text=%s&op=translate
 #   z https://www.zap.co.il/search.aspx?keyword=%s
 
+# =======voice input vocalinux ( double click CONTROL key to start and stop dictation anywhere )
+# curl -fsSL https://raw.githubusercontent.com/jatinkrmalik/vocalinux/main/install.sh \
+# -o /tmp/vl.sh
+# bash /tmp/vl.sh --interactive
+# vocalinux
+# ## make sure the "Status Tray Plugin" is in the panel to see the tray icon
+
 # =======qemu/kvm
 # sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients virt-manager
 # sudo adduser $USER libvirt
