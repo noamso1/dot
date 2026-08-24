@@ -44,6 +44,16 @@ vim.keymap.set("n", "X", "V\"_x") -- delete line without cut
 -- vim.keymap.set("x", "j", "j") --disable some stupid nvchad mappings ( no need - done in mappings.lua )
 -- vim.keymap.set("x", "k", "k") --disable some stupid nvchad mappings ( no need - done in mappings.lua )
 
+--- CSV
+vim.keymap.set("n", " ,", function() -- align csv columns (quote-aware)
+  package.loaded["custom.csv_align"] = nil
+  require("custom.csv_align").align()
+end, { desc = "CSV: align columns" })
+vim.keymap.set("n", " <", function() -- unalign csv (strip cell trailing spaces)
+  package.loaded["custom.csv_align"] = nil
+  require("custom.csv_align").unalign()
+end, { desc = "CSV: unalign columns" })
+
 -- prettier
 vim.keymap.set("n", "<leader>F", function()
   require("conform").format({ async = true, lsp_fallback = true })
