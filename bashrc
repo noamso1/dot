@@ -108,4 +108,5 @@ tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-25
 tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "${2:-*}" ; }
 gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
+csv() { column -s, -t < ${1} | vi - ; }
 
