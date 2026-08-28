@@ -80,7 +80,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # -o /tmp/vl.sh
 # bash /tmp/vl.sh --interactive
 # vocalinux
-# ## make sure the "Status Tray Plugin" is in the panel to see the tray icon
+# ### make sure the "Status Tray Plugin" is in the panel to see the tray icon
 
 # =======qemu/kvm
 # sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients virt-manager
