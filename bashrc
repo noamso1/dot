@@ -65,10 +65,7 @@ alias wifi_disconnect='nmcli con down id'
 # alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
 alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
 alias xfceload='cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
-alias sm='ssh -i ~/.ssh/maps.cer ubuntu@ssh.maps.moovex.ai'
-alias sm2='ssh -i ~/.ssh/maps.cer root@ec2-34-201-173-180.compute-1.amazonaws.com'
-alias s2='ssh -i ~/.ssh/noamso4.pem ubuntu@18.233.128.80'
-alias so='ssh -i ~/.ssh/noamorq root@206.189.193.33'
+alias so='ssh -i ~/.ssh/noamorq user@206.189.193.33'
 alias sg='gcloud cloud-shell ssh --authorize-session'
 alias vnctunnel='ssh -L 5901:localhost:5901 -N -C root@noamso.one'
 alias toascii='od -An -vtu1' #hex
@@ -89,13 +86,11 @@ alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
-alias node22='~/Downloads/node-v22.9.0-linux-x64/bin/node --experimental-strip-types'
 export PL=~/Platform/apps/fleet-backend
 export PB=~/Platform/apps/fleet-backend/src/components/routing/core/pb.json
 export CLAUDE_CODE_DISABLE_MOUSE=1
 #jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
-engine() { export DEBUG_ENGINE=true && export TS_NODE_COMPILER_OPTIONS='{"lib":["esnext","dom"]}' && cd ~/Platform/apps/fleet-backend && npx ts-node ./src/components/routing/core/engine.ts "test$1" ; }
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
 decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
