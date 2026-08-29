@@ -19,6 +19,11 @@ cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
+# ========termux
+# termux-setup-storage
+# ### termux-change-repo
+# cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.termux/font.ttf
+
 # ========ufw
 # sudo apt install ufw
 # sudo ufw allow 22/tcp
@@ -57,7 +62,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 
 # ======graphical
 # mkdir -p ~/.local/share/fonts
-# cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts ### IN TERMUX COPY TO ~/.termux/font.ttf
+# cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.local/share/fonts
 # sudo apt install -y xfce4-panel-profiles fonts-noto-color-emoji chromium gimp audacity transmission remmina libreoffice-calc libreoffice-writer mate-calc blueman
 # fc-cache -f
 # xfceload
