@@ -19,10 +19,19 @@ cp ~/dot/gitconfig ~/.gitconfig
 cd ~/dot && npm i json5 jsonwebtoken && cd -
 rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
-# ========termux
+# # ========termux
 # termux-setup-storage
 # ### termux-change-repo
+# apt update -y && apt upgrade -y
+# apt install -y htop curl git tmux neovim unzip ripgrep jq rsync nodejs
 # cp ~/dot/NotoMonoNerdFontMono-Regular.ttf ~/.termux/font.ttf
+# git clone https://github.com/noamso1/dot.git # git clone git@github.com:noamso1/dot.git
+# cp ~/dot/bashrc ~/.bashrc
+# cp ~/dot/tmux.conf ~/.tmux.conf
+# cp ~/dot/nanorc ~/.nanorc
+# cp ~/dot/gitconfig ~/.gitconfig
+# cd ~/dot && npm i json5 jsonwebtoken && cd -
+# rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
 
 # ========ufw
 # sudo apt install ufw
