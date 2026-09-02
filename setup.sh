@@ -32,6 +32,8 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # cp ~/dot/gitconfig ~/.gitconfig
 # cd ~/dot && npm i json5 jsonwebtoken && cd -
 # rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nvim && cp -R ~/dot/nvim ~/.config
+# git config --global user.email "noamso34@gmail.com"
+# git config --global user.name "noamso"
 
 # ========ufw
 # sudo apt install ufw
