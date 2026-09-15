@@ -92,8 +92,8 @@ export CLAUDE_CODE_DISABLE_MOUSE=1
 #jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
-encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:$2 ; }
-decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d ; }
+encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:"$2" ; }
+decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d -pass pass:"$2" ; }
 encrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -pass pass:$3 ; }
 decrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -d ; }
 tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -out "${@: -2:1}" ; }
