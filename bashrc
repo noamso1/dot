@@ -2,6 +2,7 @@
 [[ -z "$TMUX" ]] && [[ -z $(tmux ls 2>&1 | grep attached) ]] && { tmux a || tmux -u ; }
 
 co=${co:-239}
+co=125
 PS1="\[\e[48;5;${co}m\]\u@\h\[\e[48;5;239m\]:\[\e[0m\]\[\e[48;5;56m\]\w\[\e[0m\] "
 [[ -n $TMUX ]] && tmux set -g status-style "bg=colour${co} fg=colour137 dim"
 
@@ -26,7 +27,6 @@ alias lp='ls -ltrd $PWD/* --color=auto --time-style="+%Y-%m-%d %H:%M:%S" --group
 alias ld='l | grep ^d'
 alias dirsize='du -sb | cut -f1 | numfmt --grouping'
 alias g='egrep -nirs --exclude-dir=node_modules --exclude-dir=.* --color'
-alias back='bash ~/misc/back.sh'
 alias v='vi ~/misc/linux.txt'
 alias t='vi ~/todo.txt'
 alias ngi='sudo vi /etc/nginx/conf.d/server.conf'
@@ -38,8 +38,6 @@ alias clip='xclip -selection c' ### ls | clip
 alias tm='tmux a || tmux -u' # utf8 support
 alias enc='openssl aes-256-cbc -salt -pbkdf2'
 alias t1='modprobe -r psmouse'
-alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
-alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
 alias mongo1='docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && docker start mongo1'
 alias mongob='docker exec -it mongo1 bash'
 alias mongosh='docker exec -it mongo1 mongosh'
@@ -67,6 +65,8 @@ alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce && xf
 alias xfceload='cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
 alias so='ssh -i ~/.ssh/noamorq user@206.189.193.33'
 alias sg='gcloud cloud-shell ssh --authorize-session'
+alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
+alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
 alias vnctunnel='ssh -L 5901:localhost:5901 -N -C root@noamso.one'
 alias toascii='od -An -vtu1' #hex
 alias curlt='curl -w "\nTIME %{time_total}\n"'
@@ -106,4 +106,5 @@ gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; g
 csv() { column -s, -t < ${1} | vi - ; }
 soput() { scp -i ~/.ssh/noamorq "$@" user@206.189.193.33:/home/user/1 ; }
 alias soget='set -f; _soget'; _soget() { set +f; scp -i ~/.ssh/noamorq "${@/#/user@206.189.193.33:/home/user/1/}" . ; }
+
 
