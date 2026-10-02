@@ -104,5 +104,5 @@ tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "
 gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
 csv() { column -s, -t < ${1} | vi - ; }
-to_1() { scp -i ~/.ssh/noamorq "$@" user@206.189.193.33:/home/user ; }
+to_1() { scp -i ~/.ssh/noamorq "$@" user@206.189.193.33:/home/user/1 ; }
 
