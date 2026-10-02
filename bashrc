@@ -86,8 +86,6 @@ alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
-export PL=~/Platform/apps/fleet-backend
-export PB=~/Platform/apps/fleet-backend/src/components/routing/core/pb.json
 export CLAUDE_CODE_DISABLE_MOUSE=1
 #jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
