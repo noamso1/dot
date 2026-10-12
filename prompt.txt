@@ -1,0 +1,226 @@
+create a nodejs application written in typescript:
+the typescript should be able to run natively with "node --experimental-strip-types"
+the code should be minimalistic and human readable.
+we should not use any external libraries besides "pg".
+never use classes. only functions.
+
+----------------
+there should be two directories "back" and "front"
+the back is the server side, listening on port 4444 serving API requests.
+there should be env.json file with db connections, port, etc. untracked by git. with env_example.json .
+the database will be postgres.
+the schema for the database is described below at the bottom.
+there should be a "migrations" dir with the database creation sql and later if we need to make changes to the db the scripts will be there.
+database should be created with indexes to the ids, foreign keys, statuses, dates etc.
+upon initial creation, an "admin" user should be added.
+as an admin, there would be an option to change the user's password in the user form page.
+
+run the server with "npm run start". this will also make sure a docker image of the postgres database server is up before running the server.
+make sure the postgres server is not publicly available and only for internal use in this machine. use 127.0.0.1 i guess.
+node should be run by pm2.
+we need to run multiple instances of this app. so enable "npm run start <name> <port>" - must type a name and port for this instance,
+  this will open a new api nodejs app in pm2 and spin a db with this name under the same pg docker.
+  the env.json should not hold the app name or db name or port. try to write the command only inside package.json and not to create additional scripts.
+add a package json entry to run the pg client in the terminal with "npm run pgcli <name>"
+make a tar xz back up of the database any time with "npm run backup <name>" this will save a tar.xz file in "backups" dir which will be ignored by git.
+restore a backup using "npm run restore <name> backups/backup_file_name.tar.xz"
+
+every database table is a module in the system, with a dedicated dir, schema.ts controller.ts and service.ts .
+each module should have it's own service and controller with their own dedicated CRUD functions.
+we should support all CRUD operations, and serve a list requests with search options and pagination.
+there should be server side validation of inserted and updated data. limits will be set in the module schema.
+module schema should have all CRUD operation schemas for user inputs.
+
+files should be uploaded by the users to the 'front/upload' folder and would be accisible by other users.
+just make sure the file name is unique and hard to guess, and the server would not expose the file list and names.
+file upload functions should be in the back/files dir.
+
+users should login before using the system, and receive a JWT token with 24 hours expiration.
+users have a role:
+admin - controls every entity in the db
+user - can view anything but insert/update only his own stuff (by user_id)
+viewer - can view anything but no moderation.
+
+there should be an import page in the ui that will allow the user to upload a csv file, by choosing or dragging to the browser.
+the file will be digested by an agent to determine the right table and map the columns to our db fields.
+the agent model provider key will be stored in env.json
+the agent will be aware of our database schema.
+uploaded file should be limited to 100MB.
+make sure the agent does not need to digest all of the file but just the first 20 lines or so, and create the digesting formula from it, in order to save tokens.
+the module selection and field mapping would be shown to the user for approval before actually inserting or updating the data.
+values would be checked for example date fields should be normalized before insertion to the db.
+10 first sample rows will be shown for approval.
+row count will be shown for approval (X rows, Y new, Z update existing rows).
+rows with matching id to our db will update the row in the db.
+
+-----------------
+the front is pure vanilla HTML with javascript and css. never use any external libraries.
+
+the front will also be served by the same server.
+if path is exactly / respond with a 302 redirect to /front.
+if method is GET and path starts with /front we know it's a frontend asset.
+
+the design should be modern and minimalistic. only light mode.
+
+there should be a mobile phone friendly version of all the pages, and login screen.
+
+navigation bar on the side in desktop mode, and on top on mobile, with links to all the modules, collapsable/expandable. use icons for the modules so after collapsing the navbar, the icons will remain.
+have the user name appear on the navbar with option to sign out.
+any request that is denied should redirect to the login page.
+
+each module will have a list page, with search and filtering options, sortable columns, and pagination with page size selection.
+list page should support multi action - with checkboxes, and ability to select all page, or select all results. after selection there would be an option to "delete X users" counting the selcted items.
+there should be a button for "new user"
+
+please add date range filters in the list pages, where ever relevant, not including created_at etc. dates should always appear in the ui in YYYY-MM-DD HH:MM format.
+the date pickers should be YYYY-MM-DD HH:MM text inputs, with a small calander icon to pop up a visual selection on a calender, that will translate to our format upon selection.
+this date format should appear anywhere a date is displayed.
+
+in the top of the list pages, i want a "search" button. changing the filters does not automatically refresh the page, only when clicking on "search" it will fetch
+the list from the server. there should also be a "clear search" button. also make sure each page remembers the filtering so if i jump from one page to another, the previous search criteria remains on the page.
+
+the filters should show the filter field name in gray if nothing selected.
+
+status and type filters should be multi-select.
+
+the row database id should be visible both in the list and in the form page of every module.
+
+clicking on a list row will open the item's update form with all the fields.
+
+the ui should be multi-lingual, with a JSON translation file. we should also support right-to-left languages and also align the design for RTL.
+for now we need to support English and Hebrew.
+
+system name will be called "BTV". this will be shown at the top of the nav bar.
+
+in the item form pages, add a link to the supporting tables that have a foreign key pointing to it.
+for example in the user form page, add a link to the user's task list page filtered by this user.
+
+------------ db schema
+
+users
+  id
+  name
+  role
+  phone
+  email
+  password_hash
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+clients
+  id
+  name
+  type ( public, private )
+  address
+  phone
+  email
+  contacts ( from contacts.client_id)
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+projects
+  id
+  name
+  description
+  type (text - select from existing)
+  client_id
+  status ( lead, hold, process, done, canceled )
+  address
+  lat
+  lon
+  city (yeshuv)
+  lot (migrash)
+  plot (helka)
+  block (gush)
+  taba (key value list)
+  rules (key value list)
+  source
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+balance
+  id
+  project_id
+  task_id
+  status (pending, hold, paid, approved, canceled)
+  supplier_id
+  user_id
+  date_start
+  date_finish
+  quantity
+  per_unit
+  amount
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+working_hours
+  id
+  project_id
+  user_id
+  task_id
+  minutes
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+tasks
+  id
+  name
+  type ( meeting, decision, work, ...)
+  status ( new, pending, hold, done, canceled )
+  description
+  parent_id
+  depends_on (task_ids)
+  project_id
+  assigned_by (user_id)
+  assigned_to (user_id)
+  supplier_id
+  date_start_plan
+  date_finish_plan
+  date_start_actual
+  date_finish_actual
+  data (key value list)
+  (files - from files.task_id)
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+templates
+  (list of tasks to be loaded to a new project)
+
+suppliers
+  id
+  name
+  phone
+  email
+  address
+  type
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+contacts
+  id
+  client_id
+  name
+  address
+  phone
+  email
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
+docs
+  id
+  name
+  description
+  file
+  project_id
+  created_by (user_id)
+  updated_by (user_id)
+  created_at
+
