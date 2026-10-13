@@ -1,10 +1,11 @@
+---------- outline
 create a nodejs application written in typescript:
 the typescript should be able to run natively with "node --experimental-strip-types"
 the code should be minimalistic and human readable.
 we should not use any external libraries besides "pg".
 never use classes. only functions.
 
-----------------
+---------- stack
 there should be two directories "back" and "front"
 the back is the server side, listening on port 4444 serving API requests.
 there should be env.json file with db connections, port, etc. untracked by git. with env_example.json .
@@ -15,6 +16,7 @@ database should be created with indexes to the ids, foreign keys, statuses, date
 upon initial creation, an "admin" user should be added.
 as an admin, there would be an option to change the user's password in the user form page.
 
+--------- deployment
 run the server with "npm run start". this will also make sure a docker image of the postgres database server is up before running the server.
 make sure the postgres server is not publicly available and only for internal use in this machine. use 127.0.0.1 i guess.
 node should be run by pm2.
@@ -25,22 +27,40 @@ add a package json entry to run the pg client in the terminal with "npm run pgcl
 make a tar xz back up of the database any time with "npm run backup <name>" this will save a tar.xz file in "backups" dir which will be ignored by git.
 restore a backup using "npm run restore <name> backups/backup_file_name.tar.xz"
 
+------- parts
 every database table is a module in the system, with a dedicated dir, schema.ts controller.ts and service.ts .
 each module should have it's own service and controller with their own dedicated CRUD functions.
 we should support all CRUD operations, and serve a list requests with search options and pagination.
 there should be server side validation of inserted and updated data. limits will be set in the module schema.
 module schema should have all CRUD operation schemas for user inputs.
 
+----- user files
 files should be uploaded by the users to the 'front/upload' folder and would be accisible by other users.
 just make sure the file name is unique and hard to guess, and the server would not expose the file list and names.
 file upload functions should be in the back/files dir.
 
+------ login
 users should login before using the system, and receive a JWT token with 24 hours expiration.
 users have a role:
 admin - controls every entity in the db
 user - can view anything but insert/update only his own stuff (by user_id)
 viewer - can view anything but no moderation.
 
+----- ai agent
+the app should have an agent, with an API key in env.json
+the model token usage will be tracked and kept in the db, with date, query, user etc.
+the agent will have context of the system functions and db schema
+the agent should answer general questions about the system.
+the agent could create SQL queries in order to fetch data and or redirect the user to the relevant page with the right filters or filtered data.
+
+the agent will create SQL queries to fetch or aggregate analystics data from the db and display to the user within the chat page,
+in a table or graph or bar chart or pie chart or line chart, according to the data presented,
+with some textual explanation. also if the data is geographical with lat-lon coordinates, to be able to draw a leaflet map with markers, routes,
+or a heatmap, utilizing openstreetmap.
+in the ui there would be a chat page that the user can interact with the agent there.
+the agent will also be capable of processing imported csv files and map them to our db as described in the next paragraph.
+
+---- import csvs
 there should be an import page in the ui that will allow the user to upload a csv file, by choosing or dragging to the browser.
 the file will be digested by an agent to determine the right table and map the columns to our db fields.
 the agent model provider key will be stored in env.json
@@ -53,7 +73,7 @@ values would be checked for example date fields should be normalized before inse
 row count will be shown for approval (X rows, Y new, Z update existing rows).
 rows with matching id to our db will update the row in the db.
 
------------------
+-----front-end
 the front is pure vanilla HTML with javascript and css. never use any external libraries.
 
 the front will also be served by the same server.
@@ -72,25 +92,27 @@ each module will have a list page, with search and filtering options, sortable c
 list page should support multi action - with checkboxes, and ability to select all page, or select all results. after selection there would be an option to "delete X users" counting the selcted items.
 there should be a button for "new user"
 
-please add date range filters in the list pages, where ever relevant, not including created_at etc. dates should always appear in the ui in YYYY-MM-DD HH:MM format.
-the date pickers should be YYYY-MM-DD HH:MM text inputs, with a small calander icon to pop up a visual selection on a calender, that will translate to our format upon selection.
+please add date range filters in the list pages, where ever relevant, not including system fields such as created_at etc.
+dates should always appear in the ui in YYYY-MM-DD HH:MM format.
+the date pickers should be YYYY-MM-DD HH:MM as well, with text input and a small calandar icon to pop up a visual selection on a calender,
+that will translate to our format upon selection.
 this date format should appear anywhere a date is displayed.
 
-in the top of the list pages, i want a "search" button. changing the filters does not automatically refresh the page, only when clicking on "search" it will fetch
-the list from the server. there should also be a "clear search" button. also make sure each page remembers the filtering so if i jump from one page to another, the previous search criteria remains on the page.
+in the top of the list pages, i want a "search" button. changing the filters does not automatically refresh the page,
+only when clicking on "search" it will fetch the list from the server.
+there should also be a "clear search" button.
+also make sure each page remembers the filtering and pagination state, so if i jump from one page to another, the previous search criteria remains on the page.
 
-the filters should show the filter field name in gray if nothing selected.
+the filters should show the filter field name in gray if nothing is selected.
 
-status and type filters should be multi-select.
+status and type filters should be multi-select, and add a unique color to each option, displayed in the select box and list and anywhere.
 
-the row database id should be visible both in the list and in the form page of every module.
+the row database id should be visible both in the list and in the form page of every module, with a 2 capital letter abbreviation prefix for each module.
 
 clicking on a list row will open the item's update form with all the fields.
 
-the ui should be multi-lingual, with a JSON translation file. we should also support right-to-left languages and also align the design for RTL.
-for now we need to support English and Hebrew.
-
-system name will be called "BTV". this will be shown at the top of the nav bar.
+the ui should be multilingual, with a JSON translation file. we should also support right-to-left languages and also align the design for RTL.
+for now we need to support English and Hebrew. switchable from an earth icon on the navbar.
 
 in the item form pages, add a link to the supporting tables that have a foreign key pointing to it.
 for example in the user form page, add a link to the user's task list page filtered by this user.
