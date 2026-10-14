@@ -93,6 +93,8 @@ list page should show the results count, and totals or averages for relevant num
 list page should support multi action - with checkboxes, and ability to select all page, or select all results.
 after selection there would be an option to "delete X items" counting the selected items.
 there should be a button for "new item"
+after adding a new item, or updating an item, when returning back to the list, if the updated item is in the current filtering and page,
+  this row will glow and fadeout for about 3 seconds so the user can see where he updated.
 
 please add date range filters in the list pages, where ever relevant, not including system fields such as created_at etc.
 dates should always appear in the ui in YYYY-MM-DD HH:MM format.
