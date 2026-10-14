@@ -1,5 +1,6 @@
 ---------- outline
 create a nodejs application written in typescript:
+project name should be taken from the current working directory.
 the typescript should be able to run natively with "node --experimental-strip-types"
 the code should be minimalistic and human readable.
 we should not use any external libraries besides "pg".
@@ -30,6 +31,8 @@ restore a backup using "npm run restore <name> backups/backup_file_name.tar.xz"
 ------- parts
 every database table is a module in the system, with a dedicated dir, schema.ts controller.ts and service.ts .
 each module should have it's own service and controller with their own dedicated CRUD functions.
+don't use general helper functions for SQL formatting etc. each service function should build it's own SQL in a human friendly readable code avoiding external functions as much as possible.
+of course be sure to avoid SQL injection using parameters etc.
 we should support all CRUD operations, and serve a list requests with search options and pagination.
 there should be server side validation of inserted and updated data. limits will be set in the module schema.
 module schema should have all CRUD operation schemas for user inputs.
@@ -94,6 +97,8 @@ list page should show the results count, and totals or averages for relevant num
 list page should support multi action - with checkboxes, and ability to select all page, or select all results.
 after selection there would be an option to "delete X items" counting the selected items.
 there should be a button for "new item"
+after adding a new item, or updating an item, when returning back to the list, if the updated item is in the current filtering and page,
+  this row will glow and fadeout for about 3 seconds so the user can see where he updated.
 
 please add date range filters in the list pages, where ever relevant, not including system fields such as created_at etc.
 dates should always appear in the ui in YYYY-MM-DD HH:MM format.
