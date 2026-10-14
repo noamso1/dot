@@ -41,6 +41,7 @@ file upload functions should be in the back/files dir.
 
 ------ login
 users should login before using the system, and receive a JWT token with 24 hours expiration.
+login end-point will be gurded with an rate limit to allow 5 tries within one minute for each user.
 users have a role:
 admin - controls every entity in the db
 user - can view anything but insert/update only his own stuff (by user_id)
