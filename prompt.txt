@@ -31,6 +31,8 @@ restore a backup using "npm run restore <name> backups/backup_file_name.tar.xz"
 ------- parts
 every database table is a module in the system, with a dedicated dir, schema.ts controller.ts and service.ts .
 each module should have it's own service and controller with their own dedicated CRUD functions.
+don't use general helper functions for SQL formatting etc. each service function should build it's own SQL in a human friendly readable code avoiding external functions as much as possible.
+of course be sure to avoid SQL injection using parameters etc.
 we should support all CRUD operations, and serve a list requests with search options and pagination.
 there should be server side validation of inserted and updated data. limits will be set in the module schema.
 module schema should have all CRUD operation schemas for user inputs.
