@@ -134,9 +134,8 @@ users
   phone
   email
   password_hash
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 clients
   id
@@ -146,9 +145,8 @@ clients
   phone
   email
   contacts ( from contacts.client_id)
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 projects
   id
@@ -167,9 +165,8 @@ projects
   taba (key value list)
   rules (key value list)
   source
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 balance
   id
@@ -183,9 +180,8 @@ balance
   quantity
   per_unit
   amount
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 working_hours
   id
@@ -193,9 +189,8 @@ working_hours
   user_id
   task_id
   minutes
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 tasks
   id
@@ -215,9 +210,8 @@ tasks
   date_finish_actual
   data (key value list)
   (files - from files.task_id)
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 templates
   (list of tasks to be loaded to a new project)
@@ -229,9 +223,8 @@ suppliers
   email
   address
   type
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 contacts
   id
@@ -240,9 +233,8 @@ contacts
   address
   phone
   email
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
 docs
   id
@@ -250,7 +242,6 @@ docs
   description
   file
   project_id
-  created_by (user_id)
+  updated_at
   updated_by (user_id)
-  created_at
 
