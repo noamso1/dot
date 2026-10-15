@@ -128,6 +128,8 @@ for now we need to support English and Hebrew. switchable from an earth icon on 
 in the item form pages, add a link to the supporting tables that have a foreign key pointing to it.
 for example in the user form page, add a link to the user's task list page filtered by this user.
 
+updated_at and updated_by field values will be passed from the API, but not shown in the UI.
+
 ------------ db schema
 
 users
