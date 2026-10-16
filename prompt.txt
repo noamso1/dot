@@ -118,7 +118,7 @@ the filters should show the filter field name in gray if nothing is selected.
 
 status and type filters should be multi-select, and add a unique color to each option, displayed in the select box and list and anywhere.
 
-the row database id should be visible both in the list and in the form page of every module, with a 2 capital letter abbreviation prefix for each module.
+the row database id should be visible both in the list and in the form page of every module, with a 2 capital letter abbreviation prefix for each module, do not use the letters O and I for this.
 
 clicking on a list row will open the item's update form with all the fields.
 
