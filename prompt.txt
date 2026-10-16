@@ -110,7 +110,7 @@ this date format should appear anywhere a date is displayed.
 
 in the top of the list pages, i want a "search" button. changing the filters does not automatically refresh the page,
 only when clicking on "search" or pressing enter, it will fetch the list from the server.
-there should also be a "clear search" button.
+there should also be a "clear search" button, which will reset the filtering, pagination back to first page, and restore the default sort order - date descending where applicable, or name ascsending.
 on mobile, if there are many filters in a page, collapse them with a button that shows "x filters selected" and click to expand and show the filters.
 also make sure each page remembers the filtering and pagination state, so if i jump from one page to another, the previous search criteria remains on the page.
 
