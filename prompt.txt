@@ -8,7 +8,7 @@ never use classes. only functions.
 
 ---------- stack
 there should be two directories "back" and "front"
-the back is the server side, listening on port 4444 serving API requests.
+the back is the server side, listening on port 4444 serving API requests. listen only at ip 127.0.0.1 so that not to be public without Caddy or some proper http server.
 there should be env.json file with db connections, port, etc. untracked by git. with env_example.json .
 the database will be postgres.
 the schema for the database is described below at the bottom.
