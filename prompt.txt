@@ -9,7 +9,7 @@ never use classes. only functions.
 
 ---------- stack
 there should be two directories "back" and "front"
-the back is the server side, listening on port 4444 serving API requests.
+the back is the server side, listening on port 4444 serving API requests. listen only at ip 127.0.0.1 so that not to be public without Caddy or some proper http server.
 there should be env.json file with db connections, port, etc. untracked by git. with env_example.json .
 the database will be postgres.
 the schema for the database is described below at the bottom.
@@ -111,7 +111,7 @@ this date format should appear anywhere a date is displayed.
 
 in the top of the list pages, i want a "search" button. changing the filters does not automatically refresh the page,
 only when clicking on "search" or pressing enter, it will fetch the list from the server.
-there should also be a "clear search" button.
+there should also be a "clear search" button, which will reset the filtering, pagination back to first page, and restore the default sort order - date descending where applicable, or name ascsending.
 on mobile, if there are many filters in a page, collapse them with a button that shows "x filters selected" and click to expand and show the filters.
 also make sure each page remembers the filtering and pagination state, so if i jump from one page to another, the previous search criteria remains on the page.
 
@@ -119,7 +119,7 @@ the filters should show the filter field name in gray if nothing is selected.
 
 status and type filters should be multi-select, and add a unique color to each option, displayed in the select box and list and anywhere.
 
-the row database id should be visible both in the list and in the form page of every module, with a 2 capital letter abbreviation prefix for each module.
+the row database id should be visible both in the list and in the form page of every module, with a 2 capital letter abbreviation prefix for each module, do not use the letters O and I for this.
 
 clicking on a list row will open the item's update form with all the fields.
 
