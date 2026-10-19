@@ -4,6 +4,7 @@ project name should be taken from the current working directory.
 the typescript should be able to run natively with "node --experimental-strip-types"
 the code should be minimalistic and human readable.
 we should not use any external libraries besides "pg".
+we should not use libraries for simple stuff that plain javascript can handle, such as join from node:path.
 never use classes. only functions.
 
 ---------- stack
