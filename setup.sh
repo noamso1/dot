@@ -49,7 +49,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # sudo ufw enable
 # sudo ufw status
 
-# ======caddy https ( simple ) ( first connect provider domain to ip )
+# ======caddy https ( simple ) ( first point dns to ip and wait )
 # ...first point the DNS to the vm's ip
 # sudo apt install caddy
 # sudo vi /etc/caddy/Caddyfile
