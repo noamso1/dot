@@ -72,9 +72,9 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # curl -fsSL https://claude.ai/install.sh | bash
 
 # ====git with dif key
-# GIT_SSH_COMMAND='ssh -i ~/.ssh/noamorq -o IdentitiesOnly=yes' git clone git@github.com:noam-orq/orq.git
+# GIT_SSH_COMMAND='ssh -i ~/.ssh/noam34 -o IdentitiesOnly=yes' git clone git@github.com:noamso1/bookie.git
 # cd orq
-# git config core.sshCommand 'ssh -i ~/.ssh/noamorq'
+# git config core.sshCommand 'ssh -i ~/.ssh/noamso34'
 
 # ======graphical
 # mkdir -p ~/.local/share/fonts
