@@ -35,7 +35,7 @@ alias myip='hostname -I; curl ident.me; echo "\n"'
 alias hardware='lshw'
 alias clip='xclip -selection c' ### ls | clip
 alias tm='tmux a || tmux -u' # utf8 support
-alias enc='openssl aes-256-cbc -salt -pbkdf2'
+alias enc='openssl aes-256-cbc -salt -iter 777777'
 alias t1='modprobe -r psmouse'
 alias mongo1='docker run -d -p 27017:27017 -v ~/mongo:/data/db --name mongo1 mongo:latest && docker start mongo1'
 alias mongob='docker exec -it mongo1 bash'
@@ -90,14 +90,14 @@ export CLAUDE_CODE_DISABLE_MOUSE=1
 #jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
-encr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -pass pass:"$2" ; }
-decr() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d -pass pass:"$2" ; }
-encrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -pass pass:$3 ; }
-decrf() { openssl aes-256-cbc -salt -pbkdf2 -in "$1" -out "$2" -d ; }
-tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -out "${@: -2:1}" ; }
-tardec() { [ -z "$2" ] && echo "usage: tardec file.aaa pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -d | tar xJ ; }
-tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -pbkdf2 -pass pass:${@: -1} -a -out "${@: -2:1}" ; } ### tar and encrypt to text
-tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -pbkdf2 -in "${1}" -pass pass:${2} -a -d | tar xJ ; }
+encr() { echo $1 | openssl aes-256-cbc -salt -iter 777777 -a -pass pass:"$2" ; }
+decr() { echo $1 | openssl aes-256-cbc -salt -iter 777777 -a -d -pass pass:"$2" ; }
+encrf() { openssl aes-256-cbc -salt -iter 777777 -in "$1" -out "$2" -pass pass:$3 ; }
+decrf() { openssl aes-256-cbc -salt -iter 777777 -in "$1" -out "$2" -d ; }
+tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -iter 777777 -pass pass:${@: -1} -out "${@: -2:1}" ; }
+tardec() { [ -z "$2" ] && echo "usage: tardec file.aaa pass" || openssl aes-256-cbc -salt -iter 777777 -in "${1}" -pass pass:${2} -d | tar xJ ; }
+tarenct() { [ -z "$3" ] && echo "usage: tarenct in.txt more.* out.txt pass" || tar cvJ "${@:1:$#-2}" | openssl aes-256-cbc -salt -iter 777777 -pass pass:${@: -1} -a -out "${@: -2:1}" ; } ### tar and encrypt to text
+tardect() { [ -z "$2" ] && echo "usage: tardect file.txt pass" || openssl aes-256-cbc -salt -iter 777777 -in "${1}" -pass pass:${2} -a -d | tar xJ ; }
 tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "${2:-*}" ; }
 gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
