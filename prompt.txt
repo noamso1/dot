@@ -23,6 +23,7 @@ run the server with "npm run start". this will also make sure a docker image of 
 make sure the postgres server is not publicly available and only for internal use in this machine. use 127.0.0.1 i guess.
 node should be run by pm2.
 we need to run multiple instances of this app. so enable "npm run start <name> <port>" - must type a name and port for this instance,
+these parameters should be passed to node as arguments so they will show on "pm2 show"
   this will open a new api nodejs app in pm2 and spin a db with this name under the same pg docker.
   the env.json should not hold the app name or db name or port. try to write the command only inside package.json and not to create additional scripts.
 add a package json entry to run the pg client in the terminal with "npm run pgcli <name>"
