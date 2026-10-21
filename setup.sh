@@ -36,9 +36,9 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim && mkdir -p ~/.config/nv
 # git config --global user.name "noamso"
 
 # =====change the position of the session login dialog
-# vi /etc/lightdm/lightdm-gtk-greeter.conf
+# sudo vi /etc/lightdm/lightdm-gtk-greeter.conf
 # [greeter]
-# position= 0% 0%
+# position=10% 10%
 
 # ========ufw
 # sudo apt install ufw
