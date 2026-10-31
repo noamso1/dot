@@ -104,5 +104,6 @@ gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; g
 csv() { column -s, -t < ${1} | vi - ; }
 soput() { scp -i ~/.ssh/noamorq "$@" user@206.189.193.33:/home/user/1 ; }
 alias soget='set -f; _soget'; _soget() { set +f; scp -i ~/.ssh/noamorq "${@/#/user@206.189.193.33:/home/user/1/}" . ; }
-
+snput() { scp -i ~/.ssh/noamso34 "$@" root@84.94.122.169:/root/1 ; }
+alias snget='set -f; _snget'; _snget() { set +f; scp -i ~/.ssh/noamso34 "${@/#/root@84.94.122.169:/root/1/}" . ; }
 
