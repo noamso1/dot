@@ -98,6 +98,8 @@ have the user name appear on the navbar with option to sign out.
 any request that is denied should redirect to the login page.
 
 each module will have a list page, with search and filtering options, sortable columns, and pagination with page size selection.
+after sorting the page will reset to the first page.
+when sorting, null values will come first in ascending order.
 list page should show the results count, and totals or averages for relevant numeric values.
 list page should support multi action - with checkboxes, and ability to select all page, or select all results.
 after selection there would be an option to "delete X items" counting the selected items.
