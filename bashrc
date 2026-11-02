@@ -107,3 +107,48 @@ alias soget='set -f; _soget'; _soget() { set +f; scp -i ~/.ssh/noamorq "${@/#/us
 snput() { scp -i ~/.ssh/noamso34 "$@" root@84.94.122.169:/root/1 ; }
 alias snget='set -f; _snget'; _snget() { set +f; scp -i ~/.ssh/noamso34 "${@/#/root@84.94.122.169:/root/1/}" . ; }
 
+arce() {
+  # archive a dir and send it by email. should have ~/arce.json {"resend_key":"","from":"","to":""}
+  local c=~/arce.json
+  [ -r "$c" ] || { echo "arce: cannot read $c" >&2; return 1; }
+  jq -e . "$c" >/dev/null || { echo "arce: $c is not valid json" >&2; return 1; }
+  local from key to
+  from=$(jq -r '.from // empty' "$c")
+  key=$(jq -r '.resend_key // empty' "$c")
+  to="${1:-$(jq -r '.to // empty' "$c")}"
+  [ -z "$from" ] && { echo "arce: no \"from\" in $c" >&2; return 1; }
+  [ -z "$key" ] && { echo "arce: no \"resend_key\" in $c" >&2; return 1; }
+  [ -z "$to" ] && { echo "usage: arce [to@email] (or set \"to\" in $c)" >&2; return 1; }
+
+  local f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")"
+  f="${f//\//.}"
+  f="${f:1}"
+  tar -c -I "xz -9 -T0" -f "${f}.tar.xz" --exclude=node_modules/* --exclude=*.aaa * || { echo "arce: tar failed" >&2; rm -f "${f}.tar.xz"; return 1; }
+  enc -in "${f}.tar.xz" -out "${f}.aaa" -pass pass:1 || { echo "arce: encryption failed" >&2; rm -f "${f}.tar.xz" "${f}.aaa"; return 1; }
+  rm "${f}.tar.xz"
+  echo "arce: sending ${f}.aaa ($(du -h "${f}.aaa" | cut -f1)) to $to"
+
+  local res code
+  res=$(base64 -w0 "${f}.aaa" \
+    | jq -Rs --arg from "$from" --arg to "$to" --arg n "${f}.aaa" \
+        '{from:$from,to:[$to],subject:("back "+$n),text:$n,attachments:[{filename:$n,content:.}]}' \
+    | curl -sS -w '\n%{http_code}' https://api.resend.com/emails \
+        -H "Authorization: Bearer $key" -H "Content-Type: application/json" --data-binary @-)
+  local rc=$?
+  code="${res##*$'\n'}"
+  res="${res%$'\n'*}"
+  if [ $rc -ne 0 ]; then
+    echo "arce: curl failed (exit $rc), kept ${f}.aaa" >&2
+    return 1
+  fi
+  if [ "${code:0:1}" != "2" ]; then
+    echo "arce: resend error (http $code), kept ${f}.aaa" >&2
+    local msg
+    msg=$(echo "$res" | jq -r '.message // empty' 2>/dev/null)
+    echo "arce: ${msg:-$res}" >&2
+    return 1
+  fi
+  echo "arce: sent, id $(echo "$res" | jq -r '.id // empty')"
+  rm "${f}.aaa"
+}
+
