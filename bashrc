@@ -126,9 +126,8 @@ arce() {
   [ -z "$from" ] && { echo "arce: no \"from\" in $c" >&2; return 1; }
   [ -z "$key" ] && { echo "arce: no \"resend_key\" in $c" >&2; return 1; }
   [ -z "$to" ] && { echo "usage: arce [to@email] (or set \"to\" in $c)" >&2; return 1; }
-  local f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")"
-  f="${f//\//.}"
-  f="${f:1}"
+  local d="${PWD##*/}"
+  local f="${d:-root}-$(date +"%Y-%m-%d-%H-%M-%S")"
   tar -c -I "xz -9 -T0" -f "${f}.tar.xz" --exclude=node_modules/* --exclude=*.aaa * || { echo "arce: tar failed" >&2; rm -f "${f}.tar.xz"; return 1; }
   enc -in "${f}.tar.xz" -out "${f}.aaa" -pass pass:1 || { echo "arce: encryption failed" >&2; rm -f "${f}.tar.xz" "${f}.aaa"; return 1; }
   rm "${f}.tar.xz"
@@ -136,7 +135,8 @@ arce() {
   local res code
   res=$(base64 -w0 "${f}.aaa" \
     | jq -Rs --arg from "$from" --arg to "$to" --arg n "${f}.aaa" \
-        '{from:$from,to:[$to],subject:("back "+$n),text:$n,attachments:[{filename:$n,content:.}]}' \
+        --arg s "back ${PWD##*/}" --arg t "$(whoami)@$(hostname)"$'\n'"${PWD}/${f}.aaa" \
+        '{from:$from,to:[$to],subject:$s,text:$t,attachments:[{filename:$n,content:.}]}' \
     | curl -sS -w '\n%{http_code}' https://api.resend.com/emails \
         -H "Authorization: Bearer $key" -H "Content-Type: application/json" --data-binary @-)
   local rc=$?
