@@ -113,6 +113,7 @@ csv() { column -s, -t < ${1} | vi - ; }
 
 alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
 alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
+
 arce() {
   # archive a dir and send it by email. should have ~/arce.json {"resend_key":"","from":"","to":""}
   local c=~/arce.json
@@ -125,7 +126,6 @@ arce() {
   [ -z "$from" ] && { echo "arce: no \"from\" in $c" >&2; return 1; }
   [ -z "$key" ] && { echo "arce: no \"resend_key\" in $c" >&2; return 1; }
   [ -z "$to" ] && { echo "usage: arce [to@email] (or set \"to\" in $c)" >&2; return 1; }
-
   local f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")"
   f="${f//\//.}"
   f="${f:1}"
@@ -133,7 +133,6 @@ arce() {
   enc -in "${f}.tar.xz" -out "${f}.aaa" -pass pass:1 || { echo "arce: encryption failed" >&2; rm -f "${f}.tar.xz" "${f}.aaa"; return 1; }
   rm "${f}.tar.xz"
   echo "arce: sending ${f}.aaa ($(du -h "${f}.aaa" | cut -f1)) to $to"
-
   local res code
   res=$(base64 -w0 "${f}.aaa" \
     | jq -Rs --arg from "$from" --arg to "$to" --arg n "${f}.aaa" \
