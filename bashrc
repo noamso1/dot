@@ -58,27 +58,11 @@ alias wifi_off='nmcli radio wifi off'
 alias wifi_list='nmcli dev wifi'
 alias wifi_connect='nmcli dev wifi connect' # network_nam password password
 alias wifi_disconnect='nmcli con down id'
-# alias xfcesave='tar cvJf ~/dot/xfce_config.tar.xz -C ~/.config/xfce4/xfconf/xfce-perchannel-xml . && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
-# alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
-alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
-alias xfceload='cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
-alias so='ssh -i ~/.ssh/noamorq user@206.189.193.33'
-alias sn='ssh -i ~/.ssh/noamso34 root@84.94.122.169'
-alias sg='gcloud cloud-shell ssh --authorize-session'
-alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
-alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
 alias vnctunnel='ssh -L 5901:localhost:5901 -N -C root@noamso.one'
 alias toascii='od -An -vtu1' #hex
 alias curlt='curl -w "\nTIME %{time_total}\n"'
 alias up='sudo apt update -y && sudo apt upgrade -y'
 alias ampy='/home/noam/.local/bin/ampy --port /dev/ttyACM0'
-alias gcp='gcloud config get-value project'
-alias gcpp='gcloud config set project'
-alias bqq='bq query --nouse_legacy_sql --max_rows=1000'
-alias bqq2='bq query --nouse_legacy_sql --max_rows=100000'
-alias bqqcsv='bq query --nouse_legacy_sql --max_rows=100000 --format=csv'
-alias bqqjson='bq query --nouse_legacy_sql --max_rows=100000 --format=json'
-alias gcplog='gcloud functions logs read --limit=500 --sort-by=TIME_UTC'
 alias colors='for i in {0..255}; do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 alias emojis='for i in {9728..10175} {127744..130020} {129648..129750}; do printf "\\U$(printf '%08x' $i) "; done; echo '
 alias ub1='docker run -ti --rm --name ub1 -v ~/Downloads:/Downloads ubuntu /bin/bash'
@@ -86,9 +70,33 @@ alias hh='vi ~/.bash_history'
 alias gs='git status'
 alias gd='git diff'
 alias pacsize='dpkg-query -W --showformat="\${Installed-Size;10}\t\${Package}\n" | sort -k1,1n'
-export CLAUDE_CODE_DISABLE_MOUSE=1
-#jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
 alias jwt='node ~/dot/jwt.js'
+#jwt() { sed 's/\./\n/g' <<< $(cut -d. -f1,2 <<< $1) | base64 --decode | jq ; }
+
+# alias xfcesave='tar cvJf ~/dot/xfce_config.tar.xz -C ~/.config/xfce4/xfconf/xfce-perchannel-xml . && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
+# alias xfceload='tar cfvJ ~/xfce_conf$(date +"%Y-%m-%d-%H-%M-%S").tar.xz ~/.config/xfce4/xfconf/xfce-perchannel-xml/* && tar xvf ~/dot/xfce_config.tar.xz --exclude="displays.xml" -C ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
+alias xfcesave='cp ~/.config/xfce4/xfconf/xfce-perchannel-xml/* ~/dot/xfce && xfce4-panel-profiles save ~/dot/xfce4-panel.tar.gz'
+alias xfceload='cp ~/dot/xfce/* ~/.config/xfce4/xfconf/xfce-perchannel-xml && pkill xfce4-panel && xfce4-panel-profiles load ~/dot/xfce4-panel.tar.gz && xfce4-panel & '
+
+alias so='ssh -i ~/.ssh/noamorq user@206.189.193.33'
+soput() { scp -i ~/.ssh/noamorq "$@" user@206.189.193.33:/home/user/1 ; }
+alias soget='set -f; _soget'; _soget() { set +f; scp -i ~/.ssh/noamorq "${@/#/user@206.189.193.33:/home/user/1/}" . ; }
+
+alias sn='ssh -i ~/.ssh/noamso34 root@84.94.122.169'
+snput() { scp -i ~/.ssh/noamso34 "$@" root@84.94.122.169:/root ; }
+alias snget='set -f; _snget'; _snget() { set +f; scp -i ~/.ssh/noamso34 "${@/#/root@84.94.122.169:/root/}" . ; }
+
+alias sg='gcloud cloud-shell ssh --authorize-session'
+alias gcp='gcloud config get-value project'
+alias gcpp='gcloud config set project'
+alias bqq='bq query --nouse_legacy_sql --max_rows=1000'
+alias bqq2='bq query --nouse_legacy_sql --max_rows=100000'
+alias bqqcsv='bq query --nouse_legacy_sql --max_rows=100000 --format=csv'
+alias bqqjson='bq query --nouse_legacy_sql --max_rows=100000 --format=json'
+alias gcplog='gcloud functions logs read --limit=500 --sort-by=TIME_UTC'
+
+export CLAUDE_CODE_DISABLE_MOUSE=1
+
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | enc -a -pass pass:"$2" ; }
 decr() { echo $1 | enc -a -d -pass pass:"$2" ; }
@@ -102,11 +110,9 @@ tarexc() { tar cvJf "${1:-1.tar.xz}" --exclude='.[^/]*' --exclude=node_modules "
 gitpush() { git add --all && git commit -a -m "${1:-.}" && git push ; }
 gitfeature() { git checkout -b "${1}" ; git add --all ; git commit -m "${1}" ; git push -u origin $1 ; }
 csv() { column -s, -t < ${1} | vi - ; }
-soput() { scp -i ~/.ssh/noamorq "$@" user@206.189.193.33:/home/user/1 ; }
-alias soget='set -f; _soget'; _soget() { set +f; scp -i ~/.ssh/noamorq "${@/#/user@206.189.193.33:/home/user/1/}" . ; }
-snput() { scp -i ~/.ssh/noamso34 "$@" root@84.94.122.169:/root/1 ; }
-alias snget='set -f; _snget'; _snget() { set +f; scp -i ~/.ssh/noamso34 "${@/#/root@84.94.122.169:/root/1/}" . ; }
 
+alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in 1.tar.xz -out 1.aaa -pass pass:1 && rm 1.tar.xz'
+alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
 arce() {
   # archive a dir and send it by email. should have ~/arce.json {"resend_key":"","from":"","to":""}
   local c=~/arce.json
