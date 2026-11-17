@@ -100,6 +100,7 @@ export CLAUDE_CODE_DISABLE_MOUSE=1
 c() { export BC_LINE_LENGTH=0; echo "scale=3; $*" | bc; } #calculator
 encr() { echo $1 | enc -a -pass pass:"$2" ; }
 decr() { echo $1 | enc -a -d -pass pass:"$2" ; }
+decrold() { echo $1 | openssl aes-256-cbc -salt -pbkdf2 -a -d -pass pass:"$2" ; }
 encrf() { enc -in "$1" -out "$2" -pass pass:$3 ; }
 decrf() { enc -in "$1" -out "$2" -d ; }
 tarenc() { [ -z "$3" ] && echo "usage: tarenc in.txt more.* out.aaa pass" || tar cvJ "${@:1:$#-2}" | enc -pass pass:${@: -1} -out "${@: -2:1}" ; }
