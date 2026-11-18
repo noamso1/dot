@@ -116,45 +116,75 @@ alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modul
 alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
 
 arce() {
-  # archive a dir and send it by email. should have ~/arce.json {"resend_key":"","from":"","to":""}
-  local c=~/arce.json
-  [ -r "$c" ] || { echo "arce: cannot read $c" >&2; return 1; }
-  jq -e . "$c" >/dev/null || { echo "arce: $c is not valid json" >&2; return 1; }
-  local from key to
-  from=$(jq -r '.from // empty' "$c")
-  key=$(jq -r '.resend_key // empty' "$c")
-  to="${1:-$(jq -r '.to // empty' "$c")}"
-  [ -z "$from" ] && { echo "arce: no \"from\" in $c" >&2; return 1; }
-  [ -z "$key" ] && { echo "arce: no \"resend_key\" in $c" >&2; return 1; }
-  [ -z "$to" ] && { echo "usage: arce [to@email] (or set \"to\" in $c)" >&2; return 1; }
+  # archive+encrypt current dir and email it via e to "to" in ~/e.json
+  local to
+  to=$(jq -r '.to // empty' ~/e.json 2>/dev/null)
+  [ -z "$to" ] && { echo "arce: no \"to\" in ~/e.json" >&2; return 1; }
   local d="${PWD##*/}"
   local f="${d:-root}-$(date +"%Y-%m-%d-%H-%M-%S")"
   tar -c -I "xz -9 -T0" -f "${f}.tar.xz" --exclude=node_modules/* --exclude=*.aaa * || { echo "arce: tar failed" >&2; rm -f "${f}.tar.xz"; return 1; }
   enc -in "${f}.tar.xz" -out "${f}.aaa" -pass pass:1 || { echo "arce: encryption failed" >&2; rm -f "${f}.tar.xz" "${f}.aaa"; return 1; }
   rm "${f}.tar.xz"
   echo "arce: sending ${f}.aaa ($(du -h "${f}.aaa" | cut -f1)) to $to"
-  local res code
-  res=$(base64 -w0 "${f}.aaa" \
-    | jq -Rs --arg from "$from" --arg to "$to" --arg n "${f}.aaa" \
-        --arg s "back ${PWD##*/}" --arg t "$(whoami)@$(hostname)"$'\n'"${PWD}/${f}.aaa" \
-        '{from:$from,to:[$to],subject:$s,text:$t,attachments:[{filename:$n,content:.}]}' \
+  e "$to" "back ${d}" "$(whoami)@$(hostname)"$'\n'"${PWD}/${f}.aaa" "${f}.aaa" && rm "${f}.aaa" || { echo "arce: kept ${f}.aaa" >&2; return 1; }
+}
+
+e() {
+  # config ~/e.json {"resend_key":"","from":"","reply_to":"","to":""}  (reply_to optional)
+  # send email via resend: e [to] subject [body] [attachment]
+  # "to" is used only if the first arg is an email, otherwise "to" from config. from/reply_to always from config
+  # "to" may be comma separated. body "-" reads from stdin.
+  local c=~/e.json
+  [ -r "$c" ] || { echo "e: cannot read $c" >&2; return 1; }
+  jq -e . "$c" >/dev/null || { echo "e: $c is not valid json" >&2; return 1; }
+  local sender key replyto to
+  sender=$(jq -r '.from // empty' "$c")
+  replyto=$(jq -r '.reply_to // empty' "$c")
+  to=$(jq -r '.to // empty' "$c")
+  key=$(jq -r '.resend_key // empty' "$c")
+  [ -z "$sender" ] && { echo "e: no \"from\" in $c" >&2; return 1; }
+  [ -z "$key" ] && { echo "e: no \"resend_key\" in $c" >&2; return 1; }
+  _e_is_email() {  # single address or comma separated list
+    local a; local IFS=,
+    for a in $1; do
+      a="${a#"${a%%[![:space:]]*}"}"; a="${a%"${a##*[![:space:]]}"}"
+      [[ $a =~ ^[^[:space:]@,]+@[^[:space:]@,]+\.[^[:space:]@,]+$ ]] || return 1
+    done
+  }
+  _e_is_email "$1" && { to="$1"; shift; }
+  if [ $# -lt 1 ]; then
+    echo "usage: e [to] subject [body] [attachment]   (body - = stdin)" >&2; return 1
+  fi
+  [ -z "$to" ] && { echo "e: no recipient given and no \"to\" in $c" >&2; return 1; }
+  local subject="$1" body="$2" att="$3"
+  [ "$body" = "-" ] && body=$(cat)
+  [ -z "$body" ] && body=" "  # resend requires a text body
+  local tmp
+  tmp=$(mktemp) || return 1
+  if [ -n "$att" ]; then
+    [ -r "$att" ] || { echo "e: cannot read attachment $att" >&2; rm -f "$tmp"; return 1; }
+    base64 -w0 "$att" > "$tmp"
+  fi
+  local res code rc
+  res=$(jq -n --arg from "$sender" --arg rt "$replyto" --arg to "$to" --arg s "$subject" \
+        --arg t "$body" --arg n "${att##*/}" --rawfile a "$tmp" \
+        '{from:$from, to:($to|split(",")|map(gsub("^\\s+|\\s+$";""))|map(select(.!=""))),
+          subject:$s, text:$t}
+         + (if $rt != "" then {reply_to:$rt} else {} end)
+         + (if $n != "" then {attachments:[{filename:$n, content:$a}]} else {} end)' \
     | curl -sS -w '\n%{http_code}' https://api.resend.com/emails \
         -H "Authorization: Bearer $key" -H "Content-Type: application/json" --data-binary @-)
-  local rc=$?
+  rc=$?
+  rm -f "$tmp"
   code="${res##*$'\n'}"
   res="${res%$'\n'*}"
-  if [ $rc -ne 0 ]; then
-    echo "arce: curl failed (exit $rc), kept ${f}.aaa" >&2
-    return 1
-  fi
+  [ $rc -ne 0 ] && { echo "e: curl failed (exit $rc)" >&2; return 1; }
   if [ "${code:0:1}" != "2" ]; then
-    echo "arce: resend error (http $code), kept ${f}.aaa" >&2
     local msg
     msg=$(echo "$res" | jq -r '.message // empty' 2>/dev/null)
-    echo "arce: ${msg:-$res}" >&2
+    echo "e: resend error (http $code): ${msg:-$res}" >&2
     return 1
   fi
-  echo "arce: sent, id $(echo "$res" | jq -r '.id // empty')"
-  rm "${f}.aaa"
+  echo "e: sent to $to, id $(echo "$res" | jq -r '.id // empty')"
 }
 
