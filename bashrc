@@ -130,16 +130,15 @@ arce() {
 }
 
 e() {
-  # config ~/e.json {"resend_key":"","from":"","reply_to":"","to":""}  (reply_to optional)
+  # config ~/e.json {"resend_key":"","from":"","to":""}
   # send email via resend: e [to] subject [body] [attachment]
-  # "to" is used only if the first arg is an email, otherwise "to" from config. from/reply_to always from config
+  # "to" is used only if the first arg is an email, otherwise "to" from config. from always from config
   # "to" may be comma separated. body "-" reads from stdin.
   local c=~/e.json
   [ -r "$c" ] || { echo "e: cannot read $c" >&2; return 1; }
   jq -e . "$c" >/dev/null || { echo "e: $c is not valid json" >&2; return 1; }
-  local sender key replyto to
+  local sender key to
   sender=$(jq -r '.from // empty' "$c")
-  replyto=$(jq -r '.reply_to // empty' "$c")
   to=$(jq -r '.to // empty' "$c")
   key=$(jq -r '.resend_key // empty' "$c")
   [ -z "$sender" ] && { echo "e: no \"from\" in $c" >&2; return 1; }
@@ -166,11 +165,10 @@ e() {
     base64 -w0 "$att" > "$tmp"
   fi
   local res code rc
-  res=$(jq -n --arg from "$sender" --arg rt "$replyto" --arg to "$to" --arg s "$subject" \
+  res=$(jq -n --arg from "$sender" --arg to "$to" --arg s "$subject" \
         --arg t "$body" --arg n "${att##*/}" --rawfile a "$tmp" \
         '{from:$from, to:($to|split(",")|map(gsub("^\\s+|\\s+$";""))|map(select(.!=""))),
           subject:$s, text:$t}
-         + (if $rt != "" then {reply_to:$rt} else {} end)
          + (if $n != "" then {attachments:[{filename:$n, content:$a}]} else {} end)' \
     | curl -sS -w '\n%{http_code}' https://api.resend.com/emails \
         -H "Authorization: Bearer $key" -H "Content-Type: application/json" --data-binary @-)
