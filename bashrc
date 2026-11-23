@@ -116,33 +116,33 @@ alias arc='rm -f 1.aaa && tar -c -I "xz -9 -T0" -f 1.tar.xz --exclude=node_modul
 alias arcs='f="${PWD}/$(date +"%Y-%m-%d-%H-%M-%S")" && f="${f//\//.}" && f="${f:1}" && tar -c -I "xz -9 -T0" -f ${f}.tar.xz --exclude=node_modules/* --exclude=*.aaa * && enc -in ${f}.tar.xz -out ${f}.aaa -pass pass:1 && rm ${f}.tar.xz && scp -i ~/.ssh/noamorq ${f}.aaa user@206.189.193.33:/home/user/back && rm ${f}.aaa ;'
 
 arce() {
-  # archive+encrypt current dir and email it via e to "to" in ~/e.json
+  # archive+encrypt current dir and email it to "to" in ~/email.json
   local to
-  to=$(jq -r '.to // empty' ~/e.json 2>/dev/null)
-  [ -z "$to" ] && { echo "arce: no \"to\" in ~/e.json" >&2; return 1; }
+  to=$(jq -r '.to // empty' ~/email.json 2>/dev/null)
+  [ -z "$to" ] && { echo "arce: no \"to\" in ~/email.json" >&2; return 1; }
   local d="${PWD##*/}"
   local f="${d:-root}-$(date +"%Y-%m-%d-%H-%M-%S")"
   tar -c -I "xz -9 -T0" -f "${f}.tar.xz" --exclude=node_modules/* --exclude=*.aaa * || { echo "arce: tar failed" >&2; rm -f "${f}.tar.xz"; return 1; }
   enc -in "${f}.tar.xz" -out "${f}.aaa" -pass pass:1 || { echo "arce: encryption failed" >&2; rm -f "${f}.tar.xz" "${f}.aaa"; return 1; }
   rm "${f}.tar.xz"
   echo "arce: sending ${f}.aaa ($(du -h "${f}.aaa" | cut -f1)) to $to"
-  e "$to" "back ${d}" "$(whoami)@$(hostname)"$'\n'"${PWD}/${f}.aaa" "${f}.aaa" && rm "${f}.aaa" || { echo "arce: kept ${f}.aaa" >&2; return 1; }
+  email "$to" "back ${d}" "$(whoami)@$(hostname)"$'\n'"${PWD}/${f}.aaa" "${f}.aaa" && rm "${f}.aaa" || { echo "arce: kept ${f}.aaa" >&2; return 1; }
 }
 
-e() {
-  # config ~/e.json {"resend_key":"","from":"","to":""}
-  # send email via resend: e [to] subject [body] [attachment]
+email() {
+  # config ~/email.json {"resend_key":"","from":"","to":""}
+  # send email via resend: email [to] subject [body] [attachment]
   # "to" is used only if the first arg is an email, otherwise "to" from config. from always from config
   # "to" may be comma separated. body "-" reads from stdin.
-  local c=~/e.json
-  [ -r "$c" ] || { echo "e: cannot read $c" >&2; return 1; }
-  jq -e . "$c" >/dev/null || { echo "e: $c is not valid json" >&2; return 1; }
+  local c=~/email.json
+  [ -r "$c" ] || { echo "email: cannot read $c" >&2; return 1; }
+  jq -e . "$c" >/dev/null || { echo "email: $c is not valid json" >&2; return 1; }
   local sender key to
   sender=$(jq -r '.from // empty' "$c")
   to=$(jq -r '.to // empty' "$c")
   key=$(jq -r '.resend_key // empty' "$c")
-  [ -z "$sender" ] && { echo "e: no \"from\" in $c" >&2; return 1; }
-  [ -z "$key" ] && { echo "e: no \"resend_key\" in $c" >&2; return 1; }
+  [ -z "$sender" ] && { echo "email: no \"from\" in $c" >&2; return 1; }
+  [ -z "$key" ] && { echo "email: no \"resend_key\" in $c" >&2; return 1; }
   _e_is_email() {  # single address or comma separated list
     local a; local IFS=,
     for a in $1; do
@@ -152,16 +152,16 @@ e() {
   }
   _e_is_email "$1" && { to="$1"; shift; }
   if [ $# -lt 1 ]; then
-    echo "usage: e [to] subject [body] [attachment]   (body - = stdin)" >&2; return 1
+    echo "usage: email [to] subject [body] [attachment]   (body - = stdin)" >&2; return 1
   fi
-  [ -z "$to" ] && { echo "e: no recipient given and no \"to\" in $c" >&2; return 1; }
+  [ -z "$to" ] && { echo "email: no recipient given and no \"to\" in $c" >&2; return 1; }
   local subject="$1" body="$2" att="$3"
   [ "$body" = "-" ] && body=$(cat)
   [ -z "$body" ] && body=" "  # resend requires a text body
   local tmp
   tmp=$(mktemp) || return 1
   if [ -n "$att" ]; then
-    [ -r "$att" ] || { echo "e: cannot read attachment $att" >&2; rm -f "$tmp"; return 1; }
+    [ -r "$att" ] || { echo "email: cannot read attachment $att" >&2; rm -f "$tmp"; return 1; }
     base64 -w0 "$att" > "$tmp"
   fi
   local res code rc
@@ -176,13 +176,13 @@ e() {
   rm -f "$tmp"
   code="${res##*$'\n'}"
   res="${res%$'\n'*}"
-  [ $rc -ne 0 ] && { echo "e: curl failed (exit $rc)" >&2; return 1; }
+  [ $rc -ne 0 ] && { echo "email: curl failed (exit $rc)" >&2; return 1; }
   if [ "${code:0:1}" != "2" ]; then
     local msg
     msg=$(echo "$res" | jq -r '.message // empty' 2>/dev/null)
-    echo "e: resend error (http $code): ${msg:-$res}" >&2
+    echo "email: resend error (http $code): ${msg:-$res}" >&2
     return 1
   fi
-  echo "e: sent to $to, id $(echo "$res" | jq -r '.id // empty')"
+  echo "email: sent to $to, id $(echo "$res" | jq -r '.id // empty')"
 }
 
